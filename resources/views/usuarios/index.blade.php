@@ -1,15 +1,14 @@
 @extends('layouts.app') 
 @section('contenidoprincipal') 
-<div class="container">     
-   <div class="row">
-    <div class="col-xs-12">
-      <div class="box">
-          <div class="box-header">
-            <h3 class="box-title"><button type="button" class="btn btn-warning">Usuarios</button> </h3> 
+   
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-header">
             <button type="button" class="btn btn-success" id="btneditar"   data-toggle="modal" data-target="#modal-agregar">Agregar usuarios</button>
           </div>
           <!-- /.box-header -->
-          <div class="box-body">
+          <div class="card-body">
              <table id="example1" class="table table-bordered table-striped">           
             <thead>                  
               <tr>                    
@@ -145,11 +144,11 @@
   <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-</div>
+
 @endsection
 @section("scriptpie")
 <script>
-  $(function () {
+  (function ($) {
     $('#example1').DataTable({
       language: {
         "decimal": "",
@@ -173,7 +172,7 @@
         $('#searchBox').css("width", "400px").focus();
       }
     })
-  })
+  
 
  $(document).on("click", "#btneditar", function () {
     //alert("accediendo a la edicion..."+$(this).attr('data-id'));
@@ -204,12 +203,12 @@
       alert("No pueden haber campos vacios.");
       return false;
     }    
-    alert(password);
+   // alert(password);
     if(password !== rpassword){
       alert("la contraseña no coincide");
       return false;
     }else{
-      alert("son iguales");
+     // alert("son iguales");
     }
 
     if(password=='' && rpassword == ''){
@@ -270,6 +269,6 @@
         });
     }
   });
-
+})(jQuery);
 </script>
 @endsection
