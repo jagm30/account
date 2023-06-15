@@ -5,35 +5,35 @@
   <div class="col-md-12">
       <div class="card">
           <div class="card-header">
-            <button type="button" class="btn btn-primary"> Usuarios</button> <button type="button" class="btn btn-success" id="btneditar"   data-toggle="modal" data-target="#modal-agregar">Agregar usuarios</button>
+            <button type="button" class="btn btn-primary"> Clientes</button> <button type="button" class="btn btn-success" id="btneditar"   data-toggle="modal" data-target="#modal-agregar">Agregar cliente</button>
           </div>
           <!-- /.box-header -->
           <div class="card-body">
-             <table id="example1" class="table table-bordered table-striped">           
+             <table id="example1" class="table table-bordered table-striped" style="font-size: 10pt;">           
             <thead>                  
               <tr>                    
-                <th scope="col">Id</th>                    
                 <th scope="col">Nombre</th>                    
                 <th scope="col">Email</th>                    
-                <th scope="col">Tipo de usuario</th>                                    
+                <th scope="col">Telefono</th>                    
+                <th scope="col">Direccion</th>                                    
                 <th scope="col">Acción</th>                    
                 <th scope="col"></th>                  
                 </tr>                
             </thead>                
             <tbody>                    
-              @foreach ($usuarios as $usuario)                        
+              @foreach ($clientes as $cliente)                        
                 <tr>                            
-                  <td>{{ $usuario->id }}</td>                            
-                  <td>{{ $usuario->name }}</td>                            
-                  <td>{{ $usuario->email}}</td>
-                  <td>{{ $usuario->tipo_usuario}}</td>                                     
+                  <td>{{ $cliente->apaterno }} {{ $cliente->amaterno }} {{ $cliente->nombre }}</td>
+                  <td>{{ $cliente->email }}</td>                            
+                  <td>{{ $cliente->telefono}}</td>
+                  <td>{{ $cliente->direccion}}</td>                                     
                   <td>                                
-                    <button type="button" class="btn btn-success" id="btneditar"  data-id="{{$usuario->id}}" data-toggle="modal" data-target="#modal-default">
+                    <button type="button" class="btn btn-success" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
                 Editar
               </button>
                   </td>                            
                   <td>                                
-                    <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$usuario->id}}" class="btn btn-danger">Borrar</button>                            
+                    <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$cliente->id}}" class="btn btn-danger">Borrar</button>                            
                   </td>                        
                 </tr>                    
               @endforeach                
@@ -46,41 +46,58 @@
 </div> 
 
 
-<div class="modal fade" id="modal-agregar">
-  <div class="modal-dialog">
+<div class="modal fade" id="modal-agregar" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header">        
+        <h4 class="modal-title">Registro de clientes</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Registro de usuario</h4>
+                    <span aria-hidden="true">&times;</span>
+                </button>
       </div>
       <div class="modal-body">
          <div class="row">
            <form id="formmodal">
               <input type="hidden" name="_token" id="csrf" value="{{Session::token()}}">
                 <input id="id_usuario" type="hidden" class="form-control" name="id_usuario">
-                <div class="form-group has-success col-md-12">
-                    <label class="control-label" for="inputSuccess1">Nombre</label>                     
-                    <input id="nombre" type="text" class="form-control" name="nombre"  required  autofocus>
+                
+                <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">A. Paterno</label>                     
+                    <input id="apaterno" type="text" class="form-control" name="apaterno"  required  autofocus>
+                </div>
+                <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">A. Materno</label>                     
+                    <input id="amaterno" type="text" class="form-control" name="amaterno"  required  autofocus>
+                </div>
+                <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">Nombres</label>                     
+                    <input id="nombres" type="text" class="form-control" name="nombres"  required  autofocus>
                 </div>
                 <div class="form-group has-warning col-md-6">
                     <label class="control-label" for="inputWarning1">Email</label>
                     <input id="email" name="email" type="email" class="form-control">
                 </div>
+                <div class="form-group has-warning col-md-6">
+                    <label class="control-label" for="inputWarning1">Telefono</label>
+                    <input id="email" name="email" type="email" class="form-control">
+                </div>
+                <div class="form-group has-warning col-md-12">
+                    <label class="control-label" for="inputWarning1">Direccion</label>
+                    <input id="email" name="email" type="email" class="form-control">
+                </div>
                 <div class="form-group has-error col-md-6">
-                    <label class="control-label" for="inputError1">Tipo de usuario</label>
+                    <label class="control-label" for="inputError1">Ciudad</label>
                     <select id="tipo_usuario" name="tipo_usuario" class="form-control">
-                        <option value="admin">Administrador</option>
-                        <option value="capturista">Capturista</option>
+                        <option value="admin">Tuxtla Gutierrez</option>
+                        <option value="capturista">Chiapas</option>
                     </select>
                 </div>
-                <div class="form-group has-success col-md-6">
-                    <label class="control-label" for="inputSuccess1">Contraseña</label>
-                    <input id="password" type="password" class="form-control" name="password"  required  autofocus>
-                </div>
                 <div class="form-group has-error col-md-6">
-                    <label class="control-label" for="inputError1">Confirma tu contraseña</label>
-                    <input id="rpassword" type="password" class="form-control" name="rpassword"  required  autofocus>
+                    <label class="control-label" for="inputError1">Estado</label>
+                    <select id="tipo_usuario" name="tipo_usuario" class="form-control">
+                        <option value="admin">Chiapas</option>
+                        <option value="capturista">Tabasco</option>
+                    </select>
                 </div>
             </form>
          </div>

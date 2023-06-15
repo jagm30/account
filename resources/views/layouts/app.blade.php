@@ -45,47 +45,47 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Principal </a>
+                        <a href="#"> <i class="menu-icon fa fa-dashboard"></i>Principal </a>
                     </li>
-                    <h3 class="menu-title">Administrador</h3><!-- /.menu-title -->
+                    
                     <li class="menu-item-has-children active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Administrador</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i class="menu-icon fa fa-laptop"></i>Administrador</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-user"></i><a href="usuarios.html">Consulta Usuarios</a></li>
-                            <li><i class="fa fa-user"></i><a href="usuarios.html">Consulta Clientes</a></li>
-                            <li><i class="fa fa-table"></i><a href="usuarios.html">Crear estado de Cuenta</a></li>
-                            <li><i class="fa fa-table"></i><a href="usuarios.html">Crear Servicios</a></li>
+                            <li><i class="fa fa-user"></i><a href="/usuarios">Consulta Usuarios</a></li>
+                            <li><i class="fa fa-user"></i><a href="/clientes">Consulta Clientes</a></li>
+                            <li><i class="fa fa-table"></i><a href="#">Crear estado de Cuenta</a></li>
+                            <li><i class="fa fa-table"></i><a href="#">Crear Servicios</a></li>
                         </ul>
                     </li>
-                    <h3 class="menu-title">Usuarios</h3><!-- /.menu-title -->
+                    
                     <li class="menu-item-has-children dropdown">
                         <a href="/usuarios" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Usuarios</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="/usuarios">Consulta Usuarios</a></li>
                         </ul>
                     </li>
-                    <h3 class="menu-title">Clientes</h3><!-- /.menu-title -->
+                    
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Clientes</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="font-fontawesome.html">Mi cuenta</a></li>
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="font-themify.html">Mi estado de Cuenta</a></li>
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="font-themify.html">Mis Servicios</a></li>
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="font-themify.html">Mis Facturas</a></li>
+                            <li><i class="menu-icon fa fa-line-chart"></i><a href="font-#">Mi cuenta</a></li>
+                            <li><i class="menu-icon fa fa-line-chart"></i><a href="font-#">Mi estado de Cuenta</a></li>
+                            <li><i class="menu-icon fa fa-line-chart"></i><a href="font-#">Mis Servicios</a></li>
+                            <li><i class="menu-icon fa fa-line-chart"></i><a href="font-#">Mis Facturas</a></li>
                         </ul>
                     </li>
 
-                    <h3 class="menu-title">Contador</h3><!-- /.menu-title -->
+                    
 
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Contador</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-user"></i><a href="usuarios.html">Consulta Clientes</a></li>
-                            <li><i class="fa fa-table"></i><a href="usuarios.html">Crear estado de Cuenta</a></li>
+                            <li><i class="fa fa-user"></i><a href="#">Consulta Clientes</a></li>
+                            <li><i class="fa fa-table"></i><a href="#">Crear estado de Cuenta</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Servicios </a>
+                        <a href="#"> <i class="menu-icon ti-email"></i>Servicios </a>
                     </li>
                     
                 </ul>
