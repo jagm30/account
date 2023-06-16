@@ -41,7 +41,10 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cliente::create($request->all());
+        return json_encode(array(
+            "Estado"=>"Agregado correctamente"
+        ));
     }
 
     /**
@@ -50,9 +53,14 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function show(Cliente $cliente)
+    public function show(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $cliente    = DB::table('clientes')                                        
+                    ->where('clientes.id',$id)
+                    ->first();
+            return json_encode($cliente);
+        }
     }
 
     /**
@@ -77,7 +85,21 @@ class ClienteController extends Controller
     {
         //
     }
+    public function edicion(Request $request, $id_cliente, $apaterno, $amaterno, $nombre, $email, $telefono, $direccion, $ciudad, $estado)
+    {             
+        $cliente = Cliente::find($id_cliente);
+        $cliente->apaterno  = $apaterno;
+        $cliente->amaterno  = $amaterno;
+        $cliente->nombre    = $nombre;
+        $cliente->email     = $email;
+        $cliente->telefono  = $telefono;
+        $cliente->direccion = $direccion;
+        $cliente->ciudad    = $ciudad;
+        $cliente->estado    = $estado;
+        $cliente->save();
+        return response()->json(['data' => "Cambios guardados correctamente..."]);
 
+    }
     /**
      * Remove the specified resource from storage.
      *

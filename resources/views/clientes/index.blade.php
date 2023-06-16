@@ -59,7 +59,6 @@
          <div class="row">
            <form id="formmodal">
               <input type="hidden" name="_token" id="csrf" value="{{Session::token()}}">
-                <input id="id_usuario" type="hidden" class="form-control" name="id_usuario">
                 
                 <div class="form-group has-success col-md-4">
                     <label class="control-label" for="inputSuccess1">A. Paterno</label>                     
@@ -79,22 +78,22 @@
                 </div>
                 <div class="form-group has-warning col-md-6">
                     <label class="control-label" for="inputWarning1">Telefono</label>
-                    <input id="email" name="email" type="email" class="form-control">
+                    <input id="telefono" name="telefono" type="email" class="form-control">
                 </div>
                 <div class="form-group has-warning col-md-12">
                     <label class="control-label" for="inputWarning1">Direccion</label>
-                    <input id="email" name="email" type="email" class="form-control">
+                    <input id="direccion" name="direccion" type="text" class="form-control">
                 </div>
                 <div class="form-group has-error col-md-6">
                     <label class="control-label" for="inputError1">Ciudad</label>
-                    <select id="tipo_usuario" name="tipo_usuario" class="form-control">
+                    <select id="ciudad" name="ciudad" class="form-control">
                         <option value="admin">Tuxtla Gutierrez</option>
                         <option value="capturista">Chiapas</option>
                     </select>
                 </div>
                 <div class="form-group has-error col-md-6">
                     <label class="control-label" for="inputError1">Estado</label>
-                    <select id="tipo_usuario" name="tipo_usuario" class="form-control">
+                    <select id="estado" name="estado" class="form-control">
                         <option value="admin">Chiapas</option>
                         <option value="capturista">Tabasco</option>
                     </select>
@@ -113,41 +112,59 @@
 </div>
 <!-- /.modal -->
 
-<div class="modal fade" id="modal-default">
-  <div class="modal-dialog">
+<div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header">        
+        <h4 class="modal-title">Edición de clientes</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Edición</h4>
+                    <span aria-hidden="true">&times;</span>
+                </button>
       </div>
       <div class="modal-body">
          <div class="row">
-           <form id="formmodal" method="POST" action="/clientes">
-                <input id="id_usuario" type="hidden" class="form-control" name="id_usuario">
-                <div class="form-group has-success col-md-12">
-                    <label class="control-label" for="inputSuccess1">Nombre</label>                     
-                    <input id="nombre-e" type="text" class="form-control" name="nombre-e"  required  autofocus>
+           <form id="formmodal">
+              
+                <input id="id_cliente" type="hidden" class="form-control" name="id_cliente">
+                
+                <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">A. Paterno</label>                     
+                    <input id="apaterno-e" type="text" class="form-control" name="apaterno-e"  required  autofocus>
+                </div>
+                <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">A. Materno</label>                     
+                    <input id="amaterno-e" type="text" class="form-control" name="amaterno-e"  required  autofocus>
+                </div>
+                <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">Nombres</label>                     
+                    <input id="nombres-e" type="text" class="form-control" name="nombres-e"  required  autofocus>
                 </div>
                 <div class="form-group has-warning col-md-6">
-                    <label class="control-label" for="inputWarning1">E-mail</label>
-                    <input id="email-e" name="email-e" type="text" class="form-control">
+                    <label class="control-label" for="inputWarning1">Email</label>
+                    <input id="email-e" name="email-e" type="email" class="form-control">
+                </div>
+                <div class="form-group has-warning col-md-6">
+                    <label class="control-label" for="inputWarning1">Telefono</label>
+                    <input id="telefono-e" name="telefono-e" type="email" class="form-control">
+                </div>
+                <div class="form-group has-warning col-md-12">
+                    <label class="control-label" for="inputWarning1">Direccion</label>
+                    <input id="direccion-e" name="direccion-e" type="text" class="form-control">
                 </div>
                 <div class="form-group has-error col-md-6">
-                    <label class="control-label" for="inputError1">Tipo de usuario</label>
-                    <select id="tipo_usuario-e" name="tipo_usuario-e" class="form-control">
-                        <option value="admin">Administrador</option>
-                        <option value="capturista">Capturista</option>
+                    <label class="control-label" for="inputError1">Ciudad</label>
+                    <select id="ciudad-e" name="ciudad-e" class="form-control">
+                        <option value="admin">Tuxtla Gutierrez</option>
+                        <option value="capturista">Chiapas</option>
                     </select>
                 </div>
-                <div class="form-group has-success col-md-6">
-                    <label class="control-label" for="inputSuccess1">Contraseña</label>
-                    <input id="password-e" type="password" class="form-control" name="password-e" autocomplete="off"  required  autofocus>
-                </div>
                 <div class="form-group has-error col-md-6">
-                    <label class="control-label" for="inputError1">Confirma tu contraseña</label>
-                    <input id="rpassword-e" autocomplete="off" type="password" class="form-control" name="rpassword-e"  required  autofocus>
-                </div>               
+                    <label class="control-label" for="inputError1">Estado</label>
+                    <select id="estado-e" name="estado-e" class="form-control">
+                        <option value="admin">Chiapas</option>
+                        <option value="capturista">Tabasco</option>
+                    </select>
+                </div>
             </form>
          </div>
       </div>
@@ -193,46 +210,45 @@
 
  $(document).on("click", "#btneditar", function () {
     //alert("accediendo a la edicion..."+$(this).attr('data-id'));
-    var id_usuario = $(this).attr('data-id');
-     // alert(id_usuario);
+    var id_cliente = $(this).attr('data-id');
+    $("#id_cliente").val(id_cliente);
+     // alert(id_cliente);
     $.ajax({
-           url:"/usuarios/"+id_usuario,
+           url:"/clientes/"+id_cliente,
            async: false,
            dataType:"json",
            success:function(html){                
-              $("#id_usuario").val(html.id);
-              $("#nombre-e").val(html.name);
+              
+              $("#apaterno-e").val(html.apaterno);    
+              $("#amaterno-e").val(html.amaterno);
+              $("#nombres-e").val(html.nombre);
               $("#email-e").val(html.email);
-              $("#tipo_usuario-e option[value='"+ html.tipo_usuario +"']").attr("selected",true);              
+              $("#telefono-e").val(html.telefono);
+              $("#direccion-e").val(html.direccion);           
+              $("#ciudad-e option[value='"+ html.ciudad +"']").attr("selected",true);
+              $("#estado-e option[value='"+ html.estado +"']").attr("selected",true);    
+
            }
         })
   });
 
-  $('#btn_guardarcambio').click(function() {    
-    var id_usuario      = $("#id_usuario").val();
-    var nombre          = $('#nombre-e').val();
-    var email           = $('#email-e').val();    
-    var password        = String($('#password-e').val());
-    var tipo_usuario    = $('#tipo_usuario-e').val();
-    var rpassword       = String($('#rpassword-e').val());
-    
-    if (nombre.length == 0 || email.length == 0 ) {
+  $('#btn_guardarcambio').click(function() {   
+    var id_cliente  = $("#id_cliente").val();
+    var apaterno    = $("#apaterno-e").val();
+    var amaterno    = $("#amaterno-e").val();
+    var nombre      = $("#nombres-e").val();    
+    var email       = $("#email-e").val();
+    var telefono    = $("#telefono-e").val();
+    var direccion   = $("#direccion-e").val();
+    var ciudad      = $("#ciudad-e").val();
+    var estado      = $("#estado-e").val();
+
+   /* if (nombre.length == 0 || email.length == 0 ) {
       alert("No pueden haber campos vacios.");
       return false;
-    }    
-   // alert(password);
-    if(password !== rpassword){
-      alert("la contraseña no coincide");
-      return false;
-    }else{
-     // alert("son iguales");
-    }
-
-    if(password=='' && rpassword == ''){
-      password = 'ninguno';
-    }
+    }   */
       $.ajax({
-         url:"/usuarios/edicion/"+id_usuario+"/"+nombre+"/"+email+"/"+password+"/"+tipo_usuario,
+         url:"/clientes/edicion/"+id_cliente+"/"+apaterno+"/"+amaterno+"/"+nombre+"/"+email+"/"+telefono+"/"+direccion+"/"+ciudad+"/"+estado,
          dataType:"json",
          success:function(html){
           alert(html.data);
@@ -247,21 +263,31 @@
 //Agregar producto
   $('#btn_guardaregistro').click(function() {    
     
-    var nombre          = $('#nombre').val();
-    var email           = $('#email').val();    
-    var password        = $('#password').val();
-    var tipo_usuario    = $('#tipo_usuario').val();
+    var apaterno  = $('#apaterno').val();
+    var amaterno  = $('#amaterno').val();    
+    var nombres   = $('#nombres').val();
+    var email     = $('#email').val();
+    var telefono  = $('#telefono').val();
+    var direccion = $('#direccion').val();    
+    var ciudad    = $('#ciudad').val();
+    var estado    = $('#estado').val();
+    var status    = 'activo';
 
       $.ajax({
-          url: "/usuarios",
+          url: "/clientes",
           type: "POST",
           data: {
               _token: $("#csrf").val(),
               type: 1,
-              nombre:         nombre,
-              email:          email,
-              password:       password,
-              tipo_usuario:   tipo_usuario
+              apaterno:   apaterno,
+              amaterno:   amaterno,
+              nombre:     nombres,
+              email:      email,
+              telefono:   telefono,
+              direccion:  direccion,
+              ciudad:     ciudad,
+              estado:     estado,
+              status:     status
           },
           cache: false,
           success: function(dataResult){
