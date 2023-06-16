@@ -300,11 +300,11 @@
   });
 
   $(document).on("click", "#btn-eliminar", function () {
-    var id_usuario = $(this).attr('data-id');
-    if (confirm("Desea eliminar el registro!"+id_usuario) == true) {
+    var id_cliente = $(this).attr('data-id');
+    if (confirm("¿Desea eliminar el registro?") == true) {
       $.ajax({
             type: "get",
-            url: "{{ url('usuarios/delete') }}"+'/'+ id_usuario,
+            url: "{{ url('clientes/delete') }}"+'/'+ id_cliente,
             success: function (data) {
               alert(data.data);
               location.reload();

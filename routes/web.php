@@ -29,6 +29,7 @@ Route::get('usuarios/delete/{id}', [App\Http\Controllers\UsuarioController::clas
 Route::get('usuarios/edicion/{id_usuario}/{nombre}/{email}/{password}/{tipo_usuario}',[App\Http\Controllers\UsuarioController::class,'edicion'])->name('edicionUser');
 Route::resource('/usuarios', UsuarioController::class);
 Route::get('/clientes/edicion/{id_cliente}/{apaterno}/{amaterno}/{nombre}/{email}/{telefono}/{direccion}/{ciudad}/{estado}',[App\Http\Controllers\ClienteController::class,'edicion'])->name('edicioncliente');
+Route::get('clientes/delete/{id}', [App\Http\Controllers\ClienteController::class,'destroy'])->name('eliminacliente');
 Route::resource('/clientes', ClienteController::class);
 
 Auth::routes();

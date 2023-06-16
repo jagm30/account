@@ -46,13 +46,14 @@
 </div> 
 
 
-<div class="modal fade" id="modal-agregar">
-  <div class="modal-dialog">
+<div class="modal fade" id="modal-agregar" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header">        
+        <h4 class="modal-title">Registro de Usuarios</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Registro de usuario</h4>
+                    <span aria-hidden="true">&times;</span>
+                </button>
       </div>
       <div class="modal-body">
          <div class="row">
@@ -70,8 +71,9 @@
                 <div class="form-group has-error col-md-6">
                     <label class="control-label" for="inputError1">Tipo de usuario</label>
                     <select id="tipo_usuario" name="tipo_usuario" class="form-control">
+                        <option value="cliente">Cliente</option>
                         <option value="admin">Administrador</option>
-                        <option value="capturista">Capturista</option>
+                        <option value="contador">Contador</option>
                     </select>
                 </div>
                 <div class="form-group has-success col-md-6">
@@ -96,13 +98,14 @@
 </div>
 <!-- /.modal -->
 
-<div class="modal fade" id="modal-default">
-  <div class="modal-dialog">
+<div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header">        
+        <h4 class="modal-title">Edición de usuario</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Edición</h4>
+                    <span aria-hidden="true">&times;</span>
+                </button>
       </div>
       <div class="modal-body">
          <div class="row">
@@ -119,8 +122,9 @@
                 <div class="form-group has-error col-md-6">
                     <label class="control-label" for="inputError1">Tipo de usuario</label>
                     <select id="tipo_usuario-e" name="tipo_usuario-e" class="form-control">
+                        <option value="cliente">Cliente</option>
                         <option value="admin">Administrador</option>
-                        <option value="capturista">Capturista</option>
+                        <option value="contador">Contador</option>
                     </select>
                 </div>
                 <div class="form-group has-success col-md-6">
@@ -234,7 +238,10 @@
     var email           = $('#email').val();    
     var password        = $('#password').val();
     var tipo_usuario    = $('#tipo_usuario').val();
-
+    if(nombre=='' || email == '' || password == ''){
+      alert("no se permiten campos vacios");
+      return false;
+    }
       $.ajax({
           url: "/usuarios",
           type: "POST",
