@@ -85,17 +85,17 @@ class ClienteController extends Controller
     {
         //
     }
-    public function edicion(Request $request, $id_cliente, $apaterno, $amaterno, $nombre, $email, $telefono, $direccion, $ciudad, $estado)
+    public function edicion(Request $request, $id_cliente, $nombre, $email, $telefono, $razonsocial, $rfc, $domicilio, $codigopostal, $emailfactura)
     {             
         $cliente = Cliente::find($id_cliente);
-        $cliente->apaterno  = $apaterno;
-        $cliente->amaterno  = $amaterno;
-        $cliente->nombre    = $nombre;
-        $cliente->email     = $email;
-        $cliente->telefono  = $telefono;
-        $cliente->direccion = $direccion;
-        $cliente->ciudad    = $ciudad;
-        $cliente->estado    = $estado;
+        $cliente->nombre        = $nombre;
+        $cliente->email         = $email;
+        $cliente->telefono      = $telefono;
+        $cliente->razonsocial   = $razonsocial;
+        $cliente->rfc           = $rfc;
+        $cliente->domicilio     = $domicilio;
+        $cliente->codigopostal  = $codigopostal;
+        $cliente->emailfactura  = $emailfactura;
         $cliente->save();
         return response()->json(['data' => "Cambios guardados correctamente..."]);
 
