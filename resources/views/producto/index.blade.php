@@ -1,6 +1,73 @@
 @extends('layouts.app') 
 @section('contenidoprincipal') 
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">            
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">DataTable with default features</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Id</th>                    
+                    <th>Nombre</th>                    
+                    <th>Descripción</th>   
+                    <th>Categoria</th>                    
+                    <th>Precio</th>                    
+                    <th>Precio con descuento</th>                    
+                    <th>Acción</th>                            
+                  </tr>
+                  </thead>
+                  <tbody>                
+                    @foreach ($productos as $producto)                        
+                      <tr>                            
+                        <td>{{ $producto->id }}</td>                            
+                        <td>{{ $producto->nombre }}</td>                            
+                        <td>{{ $producto->descripcion }}</td>
+                        <td>{{ $producto->categoria}}</td>                            
+                        <td>{{ $producto->precio }}</td>                            
+                        <td>{{ $producto->precioPromocion }}</td>                            
+                        <td>                                
+                          <button type="button" class="btn btn-success" id="btneditar"  data-id="{{$producto->id}}" data-toggle="modal" data-target="#largeModal">
+                            Editar
+                          </button>
+                                                       
+                          <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$producto->id}}" class="btn btn-danger">Borrar</button>                            
+                        </td>                        
+                      </tr>                    
+                    @endforeach                
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Id</th>                    
+                    <th>Nombre</th>                    
+                    <th>Descripción</th>   
+                    <th>Categoria</th>                    
+                    <th>Precio</th>                    
+                    <th>Precio con descuento</th>                    
+                    <th>Acción</th>                    
+                 
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
 
+<!--
 <div class="row">
   <div class="col-md-12">
       <div class="card">
@@ -46,6 +113,7 @@
       </div>
   </div>
 </div>
+
 
 <div class="modal fade" id="modal-agregar" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -146,7 +214,7 @@
 </div>
 
 
-
+-->
 
 
 @endsection
@@ -154,29 +222,7 @@
 <script>
   (function ($) {
 
-    $('#example1').DataTable({
-      language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados"        
-      },
-      "search": {
-            "addClass": 'form-control input-lg col-xs-12'
-      },
-      "fnDrawCallback":function(){
-        $("input[type='search']").attr("id", "searchBox");            
-        $('#searchBox').css("width", "400px").focus();
-      }
-    })
+    
     $(document).on("click", "#btneditar", function () {
     //alert("accediendo a la edicion..."+$(this).attr('data-id'));
     alert("hola");
