@@ -1,12 +1,71 @@
 @extends('layouts.app') 
 @section('contenidoprincipal') 
+
 <div class="row">
+    <div class="col-12">            
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Clientes registrados</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Nombre</th>                    
+                <th scope="col">Email</th>                    
+                <th scope="col">Telefono</th>                    
+                <th scope="col">RFC</th>                                    
+                <th scope="col">Accion</th>                    
+                <th scope="col"></th>                                
+            </tr>
+            </thead>
+            <tbody>                
+              @foreach ($clientes as $cliente)                        
+                <tr>                            
+                  <td>{{ $cliente->nombre }}</td>
+                  <td>{{ $cliente->email }}</td>                            
+                  <td>{{ $cliente->telefono}}</td>
+                  <td>{{ $cliente->rfc}}</td>                                     
+                  <td>                                
+                    <button type="button" class="btn btn-success" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
+                Editar
+              </button>
+                  </td>                            
+                  <td>                                
+                    <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$cliente->id}}" class="btn btn-danger">Borrar</button>                            
+                  </td>                        
+                </tr>                    
+              @endforeach                
+            </tbody>
+            <tfoot>
+            <tr>
+              <th scope="col">Nombre</th>                    
+                <th scope="col">Email</th>                    
+                <th scope="col">Telefono</th>                    
+                <th scope="col">RFC</th>                                    
+                <th scope="col">Accion</th>                    
+                <th scope="col"></th>                        
+           
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+<!--
+  <div class="row">
   <div class="col-md-12">
       <div class="card">
           <div class="card-header">
             <button type="button" class="btn btn-primary"> Clientes</button> <button type="button" class="btn btn-success" id="btneditar"   data-toggle="modal" data-target="#modal-agregar">Agregar cliente</button>
           </div>
-          <!-- /.box-header -->
+
           <div class="card-body">
              <table id="example1" class="table table-bordered table-striped" style="font-size: 10pt;">           
             <thead>                  
@@ -38,7 +97,7 @@
               @endforeach                
             </tbody>            
            </table>                
-          <!-- /.box-body -->
+          
         </div>
     </div>
   </div>
@@ -112,11 +171,11 @@
         <button id="btn_guardaregistro" name="btn_guardaregistro" type="button" class="btn btn-primary">Guardar cambios</button>
       </div>
     </div>
-    <!-- /.modal-content -->
+    
   </div>
-  <!-- /.modal-dialog -->
+  
 </div>
-<!-- /.modal -->
+
 
 <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -189,39 +248,16 @@
         <button id="btn_guardarcambio" name="btn_guardarcambio" type="button" class="btn btn-primary">Guardar cambios</button>
       </div>
     </div>
-    <!-- /.modal-content -->
+    
   </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
+  
+</div> -->
 
 @endsection
 @section("scriptpie")
 <script>
   (function ($) {
-    $('#example1').DataTable({
-      language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados"        
-      },
-      "search": {
-            "addClass": 'form-control input-lg col-xs-12'
-      },
-      "fnDrawCallback":function(){
-        $("input[type='search']").attr("id", "searchBox");            
-        $('#searchBox').css("width", "400px").focus();
-      }
-    })
+    
   
 
  $(document).on("click", "#btneditar", function () {
