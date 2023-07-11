@@ -1,16 +1,13 @@
 @extends('layouts.app') 
 @section('contenidoprincipal') 
-
-
-
-
+  
      <div class="card card-primary">
         <div class="card-header">
           <h3 class="card-title">Datos de contacto</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form>
+          <input type="hidden" name="_token" id="csrf" value="{{Session::token()}}">
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
@@ -22,18 +19,17 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email">Correo electronico</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter email">
+                  <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
                 </div>
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="telefono">Teléfono</label>
-                  <input type="text" class="form-control" id="telefono" placeholder="Password">
+                  <input type="text" class="form-control" id="telefono" placeholder="Ingrese su numero de teléfono">
                 </div>
               </div>                
             </div>
           </div>
-        </form>
       </div>
       <!-- /.card -->
 
@@ -42,8 +38,7 @@
           <h3 class="card-title">Empresa</h3>
         </div>
         <!-- /.card-header -->
-        <!-- form start -->
-        <form>
+        <!-- form start -->        
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
@@ -57,7 +52,7 @@
                 </div>
                 <div class="form-group">
                   <label for="email">Correo electronico</label>
-                  <input type="email" class="form-control" id="emailfactura" placeholder="Enter email">
+                  <input type="email" class="form-control" id="emailfactura" placeholder="Ingrese su email">
                 </div>
               </div>
               <div class="col-md-6">
@@ -67,7 +62,7 @@
                 </div>
                 <div class="form-group">
                   <label for="telefono">Codigo postal</label>
-                  <input type="text" class="form-control" id="codigopostal" placeholder="Ingrese el Codogio postal">
+                  <input type="text" class="form-control" id="codigopostal" placeholder="Ingrese el codigo postal">
                 </div>
                 <div class="form-group">
                   <label for="cconstanciasituacion">Situación fiscal</label>
@@ -87,10 +82,11 @@
           <!-- /.card-body -->
 
           <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary" id="btn_guardaregistro">Guardar</button>
           </div>
-        </form>
+        
       </div>
+  
       <!-- /.card -->
 
 
@@ -100,59 +96,6 @@
   (function ($) {
     
   
-
- $(document).on("click", "#btneditar", function () {
-    //alert("accediendo a la edicion..."+$(this).attr('data-id'));
-    var id_cliente = $(this).attr('data-id');
-    $("#id_cliente").val(id_cliente);
-     // alert(id_cliente);
-    $.ajax({
-           url:"/clientes/"+id_cliente,
-           async: false,
-           dataType:"json",
-           success:function(html){                
-              
-              $("#nombre-e").val(html.nombre);    
-              $("#email-e").val(html.email);
-              $("#telefono-e").val(html.telefono);
-              $("#razonsocial-e").val(html.razonsocial);
-              $("#rfc-e").val(html.rfc);
-              $("#domicilio-e").val(html.domicilio);  
-              $("#codigopostal-e").val(html.codigopostal);
-              $("#emailfactura-e").val(html.emailfactura);           
-
-
-           }
-        })
-  });
-
-  $('#btn_guardarcambio').click(function() {   
-    var id_cliente  = $("#id_cliente").val();
-    var nombre      = $("#nombre-e").val();
-    var email       = $("#email-e").val();
-    var telefono    = $("#telefono-e").val();    
-    var razonsocial = $("#razonsocial-e").val();
-    var rfc         = $("#rfc-e").val();
-    var domicilio   = $("#domicilio-e").val();
-    var codigopostal= $("#codigopostal-e").val();
-    var emailfactura= $("#emailfactura-e").val();
-
-   /* if (nombre.length == 0 || email.length == 0 ) {
-      alert("No pueden haber campos vacios.");
-      return false;
-    }   */
-      $.ajax({
-         url:"/clientes/edicion/"+id_cliente+"/"+nombre+"/"+email+"/"+telefono+"/"+razonsocial+"/"+rfc+"/"+domicilio+"/"+codigopostal+"/"+emailfactura,
-         dataType:"json",
-         success:function(html){
-          alert(html.data);
-          $("#formmodal")[0].reset();
-          $('#modal-default').modal('toggle');
-          location.reload();
-         }
-      })
-      
-  }); 
 
 //Agregar producto
   $('#btn_guardaregistro').click(function() {    
@@ -167,14 +110,6 @@
     var emailfactura= $('#emailfactura').val();
     var status      = 'activo';
 
-    alert(nombre);
-    alert(email);
-    alert(telefono);
-    alert(razonsocial);
-    alert(rfc);
-    alert(domicilio);
-    alert(codigopostal);
-    alert(emailfactura);
       $.ajax({
           url: "/clientes",
           type: "POST",
@@ -193,10 +128,8 @@
           },
           cache: false,
           success: function(dataResult){
-            alert(dataResult);     
-            $("#formmodal")[0].reset();
-            $('#modal-agregar').modal('toggle');
-            location.reload();          
+            alert(dataResult);                
+            //location.reload();          
           }
       });    
   });
