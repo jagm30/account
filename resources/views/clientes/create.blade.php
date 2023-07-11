@@ -24,15 +24,19 @@
                   <label for="email">Correo electronico</label>
                   <input type="email" class="form-control" id="email" placeholder="Enter email">
                 </div>
-              </div>              
+              </div>  
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="telefono">Teléfono</label>
+                  <input type="text" class="form-control" id="telefono" placeholder="Password">
+                </div>
+              </div>                
             </div>
           </div>
         </form>
       </div>
       <!-- /.card -->
 
-<div class="row">
-  <div class="col-md-6">
      <div class="card card-primary">
         <div class="card-header">
           <h3 class="card-title">Empresa</h3>
@@ -41,49 +45,54 @@
         <!-- form start -->
         <form>
           <div class="card-body">
-            <div class="form-group">
-              <label for="nombre">Razón social</label>
-              <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese su razon social">
-            </div>
-            <div class="form-group">
-              <label for="nombre">RFC</label>
-              <input type="text" class="form-control" id="rfc" placeholder="Ingrese su RFC">
-            </div>
-            <div class="form-group">
-              <label for="email">Correo electronico</label>
-              <input type="email" class="form-control" id="emailfactura" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="telefono">Domicilio fiscal</label>
-              <input type="text" class="form-control" id="domicilio" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <label for="telefono">Codigo postal</label>
-              <input type="text" class="form-control" id="codigopostal" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <label for="cconstanciasituacion">File input</label>
-              <div class="input-group">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="cconstanciasituacion">
-                  <label class="custom-file-label" for="cconstanciasituacion">Seleccionar archivo</label>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nombre">Razón social</label>
+                  <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese su razon social">
                 </div>
-                <div class="input-group-append">
-                  <span class="input-group-text">Cargar</span>
+                <div class="form-group">
+                  <label for="nombre">RFC</label>
+                  <input type="text" class="form-control" id="rfc" placeholder="Ingrese su RFC">
+                </div>
+                <div class="form-group">
+                  <label for="email">Correo electronico</label>
+                  <input type="email" class="form-control" id="emailfactura" placeholder="Enter email">
                 </div>
               </div>
-            </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="telefono">Domicilio fiscal</label>
+                  <input type="text" class="form-control" id="domicilio" placeholder="Ingrese el domicilio fiscal">
+                </div>
+                <div class="form-group">
+                  <label for="telefono">Codigo postal</label>
+                  <input type="text" class="form-control" id="codigopostal" placeholder="Ingrese el Codogio postal">
+                </div>
+                <div class="form-group">
+                  <label for="cconstanciasituacion">Situación fiscal</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="cconstanciasituacion">
+                      <label class="custom-file-label" for="cconstanciasituacion">Seleccionar archivo</label>
+                    </div>
+                    <div class="input-group-append">
+                      <span class="input-group-text">Cargar</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>              
           </div>
           <!-- /.card-body -->
 
           <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </div>
         </form>
       </div>
       <!-- /.card -->
-  </div>  
-</div>
+
 
 @endsection
 @section("scriptpie")
