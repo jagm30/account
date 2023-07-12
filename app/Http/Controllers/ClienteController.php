@@ -6,6 +6,7 @@ use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 class ClienteController extends Controller
 {
     /**
@@ -49,6 +50,12 @@ class ClienteController extends Controller
             $cliente->constanciasituacion = $request->file('constanciasituacion')->store('public');
         }
         $cliente->save();
+        $user = User::create([
+            'name'          => $request->nombre,
+            'email'         => $request->email,
+            'password'      => Hash::make($request->rfc),
+            'tipo_usuario'  => 'cliente',
+        ]);
         return redirect()->route('clientes.index');
         return json_encode(array(
             "Estado"=>"Agregado correctamente"

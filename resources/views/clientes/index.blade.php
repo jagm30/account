@@ -15,7 +15,8 @@
               <th scope="col">Nombre</th>                    
                 <th scope="col">Email</th>                    
                 <th scope="col">Telefono</th>                    
-                <th scope="col">RFC</th>                                    
+                <th scope="col">RFC</th>
+                <th scope="col">Constancia</th>                                    
                 <th scope="col">Accion</th>                    
                 <th scope="col"></th>                                
             </tr>
@@ -26,7 +27,8 @@
                   <td>{{ $cliente->nombre }}</td>
                   <td>{{ $cliente->email }}</td>                            
                   <td>{{ $cliente->telefono}}</td>
-                  <td>{{ $cliente->rfc}}</td>                                     
+                  <td>{{ $cliente->rfc}}</td>
+                  <td><a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Ver</a></td>                                
                   <td>                                
                     <button type="button" class="btn btn-success" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
                 Editar
@@ -43,7 +45,8 @@
               <th scope="col">Nombre</th>                    
                 <th scope="col">Email</th>                    
                 <th scope="col">Telefono</th>                    
-                <th scope="col">RFC</th>                                    
+                <th scope="col">RFC</th>
+                <th scope="col">Constancia</th>                                    
                 <th scope="col">Accion</th>                    
                 <th scope="col"></th>                        
            

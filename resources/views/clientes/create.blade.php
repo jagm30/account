@@ -26,7 +26,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="telefono">Teléfono</label>
-                  <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su numero de teléfono">
+                  <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su numero de teléfono" required>
                 </div>
               </div>                
             </div>
@@ -47,25 +47,25 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="nombre">Razón social</label>
-                  <input type="text" class="form-control" id="razonsocial" name="razonsocial" placeholder="Ingrese su razon social">
+                  <input type="text" class="form-control" id="razonsocial" name="razonsocial" placeholder="Ingrese su razon social" required>
                 </div>
                 <div class="form-group">
                   <label for="nombre">RFC</label>
-                  <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Ingrese su RFC">
+                  <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Ingrese su RFC" required>
                 </div>
                 <div class="form-group">
                   <label for="email">Correo electronico</label>
-                  <input type="email" class="form-control" id="emailfactura" name="emailfactura" placeholder="Ingrese su email">
+                  <input type="email" class="form-control" id="emailfactura" name="emailfactura" placeholder="Ingrese su email" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="telefono">Domicilio fiscal</label>
-                  <input type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Ingrese el domicilio fiscal">
+                  <input type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Ingrese el domicilio fiscal" required>
                 </div>
                 <div class="form-group">
                   <label for="telefono">Codigo postal</label>
-                  <input type="text" class="form-control" id="codigopostal" name="codigopostal" placeholder="Ingrese el codigo postal">
+                  <input type="text" class="form-control" id="codigopostal" name="codigopostal" placeholder="Ingrese el codigo postal" required>
                 </div>
                 <input type="hidden" id="status" name="status" value="activo">
                 <div class="form-group">
