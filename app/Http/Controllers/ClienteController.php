@@ -41,7 +41,15 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        Cliente::create($request->all());
+        //$request->file('archivo')->store('public');
+        //dd($request->file('cconstanciasituacion'));
+        $cliente = Cliente::create($request->all());
+
+        if($request->hasFile('constanciasituacion')){
+            $cliente->constanciasituacion = $request->file('constanciasituacion')->store('public');
+        }
+        $cliente->save();
+        return redirect()->route('clientes.index');
         return json_encode(array(
             "Estado"=>"Agregado correctamente"
         ));
