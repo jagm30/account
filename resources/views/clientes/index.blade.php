@@ -28,11 +28,12 @@
                   <td>{{ $cliente->email }}</td>                            
                   <td>{{ $cliente->telefono}}</td>
                   <td>{{ $cliente->rfc}}</td>
-                  <td><a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Ver</a></td>                                
+                  <td>@if( $cliente->constanciasituacion !='')<a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Ver</a> @endif</td>                                
                   <td>                                
-                    <button type="button" class="btn btn-success" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
-                Editar
-              </button>
+                    <a href="/clientes/{{$cliente->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
+                      Editar
+                      </button>
+                    </a>
                   </td>                            
                   <td>                                
                     <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$cliente->id}}" class="btn btn-danger">Borrar</button>                            

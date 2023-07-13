@@ -84,9 +84,21 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit(Request $request, $id)
     {
-        //
+
+        $cliente    = Cliente::findOrFail($id);
+        //return ;
+        $usuario    = DB::table('clientes')
+                    ->select('clientes.id as idcliente','clientes.email','users.name','users.email as emailuser','users.password')
+                    ->leftJoin('users', 'clientes.email','=','users.email')
+                    ->where('clientes.id',$id)
+                    ->first();    
+        //return $usuario;
+            
+            //->get(); 
+
+        return view('clientes.edit', compact('cliente','usuario')); 
     }
 
     /**
@@ -96,9 +108,26 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        $cliente->nombre        = $request->nombre;
+        $cliente->email         = $request->email;
+        $cliente->telefono      = $request->telefono;
+        $cliente->razonsocial   = $request->razonsocial;
+        $cliente->rfc           = $request->rfc;
+        $cliente->domicilio     = $request->domicilio;
+        $cliente->codigopostal  = $request->codigopostal;
+        $cliente->emailfactura  = $request->emailfactura;
+
+        if($request->hasFile('constanciasituacion')){
+            $cliente->constanciasituacion = $request->file('constanciasituacion')->store('public');
+        }
+        $cliente->save();
+        
+        return redirect()->route('clientes.index');
+        
+
     }
     public function edicion(Request $request, $id_cliente, $nombre, $email, $telefono, $razonsocial, $rfc, $domicilio, $codigopostal, $emailfactura)
     {             
