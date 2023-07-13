@@ -211,7 +211,9 @@
 <script>
   (function ($) {
 
-  
+  $("#menuusuario").addClass("nav-item menu-open");
+  $("#menuusuario2").addClass("nav-link active");
+  $("#menuconsultausuario").addClass("important nav-link active"); 
 
  $(document).on("click", "#btneditar", function () {
     //alert("accediendo a la edicion..."+$(this).attr('data-id'));

@@ -71,7 +71,7 @@
                 </div>
                 <input type="hidden" id="status" name="status" value="activo">
                 <div class="form-group">
-                  <label for="constanciasituacion">Situación fiscal @if($cliente->constanciasituacion!='') <a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar  constancia</a> @endif</label>
+                  <label for="constanciasituacion">Situación fiscal @if($cliente->constanciasituacion!='') <a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar  constancia <img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</label>
                   <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="constanciasituacion" name="constanciasituacion">
@@ -85,9 +85,7 @@
           </div>
           <!-- /.card-body -->
 
-          <div class="card-footer">
-            <button type="submit" class="btn btn-primary" id="btn_guardaregistro">Guardar</button>
-          </div>          
+                  
           
       </div>
 
@@ -112,6 +110,9 @@
               </div>                 
             </div>
           </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary" id="btn_guardaregistro">Guardar cambios</button>
+          </div>  
       </div>
     </form>   
       <!-- /.card -->
@@ -121,7 +122,10 @@
 @section("scriptpie")
 <script>
   (function ($) {
-    
+  
+  $("#menuecliente").addClass("nav-item menu-open");
+  $("#menuecliente2").addClass("nav-link active");
+  $("#menuconsultacliente").addClass("important nav-link active"); 
   
 
 //Agregar producto

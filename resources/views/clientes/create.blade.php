@@ -1,6 +1,6 @@
 @extends('layouts.app') 
 @section('contenidoprincipal') 
-  <form method="POST" action="/clientes" accept-charset="UTF-8" enctype="multipart/form-data">
+  <form method="POST" action="/clientes" accept-charset="UTF-8" name="formcliente" enctype="multipart/form-data">
      <div class="card card-primary">
         <div class="card-header">
           <h3 class="card-title">Datos de contacto</h3>
@@ -99,9 +99,63 @@
 @section("scriptpie")
 <script>
   (function ($) {
-    
+  $("#menuecliente").addClass("nav-item menu-open");
+  $("#menuecliente2").addClass("nav-link active");
+  $("#menuregistracliente").addClass("important nav-link active"); 
   
+ $('#btn_guardaregistro').click(function() {    
+    
+    var nombre      = $('#nombre').val();
+    var email       = $('#email').val();    
+    var telefono    = $('#telefono').val();
+    var razonsocial = $('#razonsocial').val();
+    var rfc         = $('#rfc').val();
+    var domicilio   = $('#domicilio').val();    
+    var codigopostal= $('#codigopostal').val();
+    var emailfactura= $('#emailfactura').val();
+    var status      = 'activo';
 
+    if (nombre == '' || nombre.length == 0 ) {
+      document.getElementById("nombre").focus();
+      //document.getElementById("cajaerror-e").innerHTML = '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-warning"></i> Alerta!</h4>Ingrese el No. de factura.</div>';
+      return false;
+    }
+    if (email == '' || email.length == 0 ) {
+      document.getElementById("email").focus();      
+      return false;
+    }
+    if (telefono == '' || telefono.length == 0 ) {
+      document.getElementById("telefono").focus();      
+      return false;
+    }
+    if(razonsocial == '' || razonsocial.length == 0 ) {
+      document.getElementById("razonsocial").focus();      
+      return false;
+    }
+    if(rfc == '' || rfc.length == 0 ) {
+      document.getElementById("rfc").focus();      
+      return false;
+    } 
+    if(domicilio == '' || domicilio.length == 0 ) {
+      document.getElementById("domicilio").focus();      
+      return false;
+    }
+    if(codigopostal == '' || codigopostal.length == 0 ) {
+      document.getElementById("codigopostal").focus();      
+      return false;
+    }
+    if(emailfactura == '' || emailfactura.length == 0 ) {
+      document.getElementById("emailfactura").focus();      
+      return false;
+    }
+    if(status == '' || status.length == 0 ) {
+      document.getElementById("status").focus();      
+      return false;
+    } 
+    $('#btn_guardaregistro').attr('disabled', true);
+    document.formcliente.submit();
+
+  });
 //Agregar producto
  /* $('#btn_guardaregistro').click(function() {    
     

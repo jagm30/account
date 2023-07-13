@@ -118,8 +118,8 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item" id="menuusuario">
+            <a href="#" class="nav-link" id="menuusuario2">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 USUARIOS
@@ -128,13 +128,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/usuarios" class="nav-link">
+                <a href="/usuarios" class="nav-link" id="menuconsultausuario">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consulta Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/usuarios/create" class="nav-link">
+                <a href="/usuarios/create" class="nav-link" id="menuregistrarusuario">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar usuario</p>
                 </a>
@@ -142,8 +142,8 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item" id="menuecliente">
+            <a href="#" class="nav-link" id="menuecliente2">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
                 CLIENTES
@@ -152,13 +152,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/clientes" class="nav-link">
+                <a href="/clientes" class="nav-link" id="menuconsultacliente">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consultar clientes</p>
                 </a>
               </li> 
               <li class="nav-item">
-                <a href="/clientes/create" class="nav-link">
+                <a href="/clientes/create" class="nav-link" id="menuregistracliente">
                   <i class="far fa-circle nav-icon"></i>
                   <p> Registrar cliente</p>
                 </a>

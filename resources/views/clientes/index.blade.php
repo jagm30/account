@@ -28,7 +28,7 @@
                   <td>{{ $cliente->email }}</td>                            
                   <td>{{ $cliente->telefono}}</td>
                   <td>{{ $cliente->rfc}}</td>
-                  <td>@if( $cliente->constanciasituacion !='')<a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Ver</a> @endif</td>                                
+                  <td>@if( $cliente->constanciasituacion !='')<a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar <img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</td>                                
                   <td>                                
                     <a href="/clientes/{{$cliente->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
                       Editar
@@ -262,7 +262,9 @@
 <script>
   (function ($) {
     
-  
+  $("#menuecliente").addClass("nav-item menu-open");
+  $("#menuecliente2").addClass("nav-link active");
+  $("#menuconsultacliente").addClass("important nav-link active"); 
 
  $(document).on("click", "#btneditar", function () {
     //alert("accediendo a la edicion..."+$(this).attr('data-id'));
