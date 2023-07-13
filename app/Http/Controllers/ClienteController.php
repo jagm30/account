@@ -49,13 +49,15 @@ class ClienteController extends Controller
         if($request->hasFile('constanciasituacion')){
             $cliente->constanciasituacion = $request->file('constanciasituacion')->store('public');
         }
-        $cliente->save();
+        
         $user = User::create([
             'name'          => $request->nombre,
             'email'         => $request->email,
             'password'      => Hash::make($request->rfc),
             'tipo_usuario'  => 'cliente',
         ]);
+        $cliente->id_user = $user->id;
+        $cliente->save();
         return redirect()->route('clientes.index');
         return json_encode(array(
             "Estado"=>"Agregado correctamente"
@@ -91,7 +93,7 @@ class ClienteController extends Controller
         //return ;
         $usuario    = DB::table('clientes')
                     ->select('clientes.id as idcliente','clientes.email','users.name','users.email as emailuser','users.password')
-                    ->leftJoin('users', 'clientes.email','=','users.email')
+                    ->leftJoin('users', 'clientes.id_user','=','users.id')
                     ->where('clientes.id',$id)
                     ->first();    
         //return $usuario;
@@ -119,6 +121,11 @@ class ClienteController extends Controller
         $cliente->domicilio     = $request->domicilio;
         $cliente->codigopostal  = $request->codigopostal;
         $cliente->emailfactura  = $request->emailfactura;
+        
+        $usuario = User::findOrFail($cliente->id_user);
+        $usuario->email         = $request->usuario;
+        $usuario->save();
+//        return $usuario;
 
         if($request->hasFile('constanciasituacion')){
             $cliente->constanciasituacion = $request->file('constanciasituacion')->store('public');
