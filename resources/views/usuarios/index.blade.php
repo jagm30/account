@@ -28,9 +28,9 @@
                   <td>{{ $usuario->email}}</td>
                   <td>{{ $usuario->tipo_usuario}}</td>                                     
                   <td>                                
-                    <button type="button" class="btn btn-success" id="btneditar"  data-id="{{$usuario->id}}" data-toggle="modal" data-target="#modal-default">
+                    <a href="/usuarios/{{$usuario->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$usuario->id}}" data-toggle="modal" data-target="#modal-default">
                 Editar
-              </button>
+              </button></a>
                   </td>                            
                   <td>                                
                     <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$usuario->id}}" class="btn btn-danger">Borrar</button>                            

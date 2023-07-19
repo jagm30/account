@@ -33,7 +33,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuarios.create'); 
     }
 
     /**
@@ -52,9 +52,10 @@ class UsuarioController extends Controller
             'password'      => Hash::make($request->password),
             'tipo_usuario'  => $request->tipo_usuario,
         ]);
-        return json_encode(array(
+        return redirect()->route('usuarios.index');
+      /*  return json_encode(array(
             "Estado"=>"Agregado correctamente"
-        ));
+        ));*/
     }
 
     /**
@@ -82,9 +83,10 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuario $usuario)
+    public function edit(Request $request, $id)
     {
-        //
+        $usuario    = User::findOrFail($id);
+        return view('usuarios.edit', compact('usuario')); 
     }
 
     /**
