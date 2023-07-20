@@ -16,6 +16,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nombre">Nombre</label>
+                  <input type="hidden" class="form-control" id="id" name="id" placeholder="Ingrese su nombre" required value="{{ $usuario->id }}">
                   <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required value="{{ $usuario->name }}">
                 </div>
               </div>  
@@ -29,22 +30,22 @@
                 <div class="form-group">
                   <label for="telefono">Tipo de usuario</label>
                   <select id="tipo_usuario" name="tipo_usuario" class="form-control">
-                      <option value="cliente">Cliente</option>
-                      <option value="admin">Administrador</option>
-                      <option value="contador">Contador</option>
+                      <option value="cliente" @if($usuario->tipo_usuario=='cliente') selected="true"@endif>Cliente</option>
+                      <option value="admin" @if($usuario->tipo_usuario=='admin') selected="true"@endif>Administrador</option>
+                      <option value="contador" @if($usuario->tipo_usuario=='contador') selected="true"@endif>Contador</option>
                   </select>
                 </div>
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="nombre">Contraseña</label>
-                  <input type="text" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                  <input type="text" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" >
                 </div>
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="nombre">Confirma tu contraseña</label>
-                  <input type="text" class="form-control" id="rpassword" name="rpassword" placeholder="Confirme su contraseña" required>
+                  <input type="text" class="form-control" id="rpassword" name="rpassword" placeholder="Confirme su contraseña" >
                 </div>
               </div>            
             </div>
@@ -62,10 +63,43 @@
 <script>
   (function ($) {
   
-  $("#menuecliente").addClass("nav-item menu-open");
-  $("#menuecliente2").addClass("nav-link active");
-  $("#menuconsultacliente").addClass("important nav-link active"); 
+$("#menuusuario").addClass("nav-item menu-open");
+  $("#menuusuario2").addClass("nav-link active");
+  $("#menuconsultausuario").addClass("important nav-link active"); 
   
+  
+  $('#btn_guardaregistro').click(function() {    
+    
+    var nombre        = $('#nombre').val();
+    var email         = $('#email').val();    
+    var tipo_usuario  = $('#tipo_usuario').val();
+    var password      = $('#password').val();
+    var rpassword     = $('#rpassword').val();
+
+
+    if (nombre == '' || nombre.length == 0 ) {
+      document.getElementById("nombre").focus();
+      return false;
+    }
+    if (email == '' || email.length == 0 ) {
+      document.getElementById("email").focus();      
+      return false;
+    }
+    if (tipo_usuario == '' || tipo_usuario.length == 0 ) {
+      document.getElementById("tipo_usuario").focus();      
+      return false;
+    }
+    if(password !== rpassword){
+      alert("la contraseña no coincide");
+      return false;
+    }
+    if(password=='' && rpassword == ''){
+      password = 'ninguno';
+    }
+   /// $('#btn_guardaregistro').attr('disabled', true);
+   // document.formcliente.submit();
+
+  });
 
   $(document).on("click", "#btn-eliminar", function () {
     var id_cliente = $(this).attr('data-id');

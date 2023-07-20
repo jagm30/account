@@ -60,9 +60,9 @@
 @section("scriptpie")
 <script>
   (function ($) {
-  $("#menuecliente").addClass("nav-item menu-open");
-  $("#menuecliente2").addClass("nav-link active");
-  $("#menuregistracliente").addClass("important nav-link active"); 
+  $("#menuusuario").addClass("nav-item menu-open");
+  $("#menuusuario2").addClass("nav-link active");
+  $("#menuregistrausuario").addClass("important nav-link active"); 
   
  $('#btn_guardaregistro').click(function() {    
     

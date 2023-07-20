@@ -96,9 +96,26 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, $id)
     {
-        //
+
+//        return $usuario;
+        if ($request->password === 'ninguno'){
+            $usuario = User::find($id);
+            $usuario->name             = $request->nombre;
+            $usuario->email            = $request->email;
+            $usuario->tipo_usuario     = $request->tipo_usuario;
+            $usuario->save();
+        }else{
+            $usuario = User::find($id);
+            $usuario->name             = $request->nombre;
+            $usuario->email            = $request->email;
+            $usuario->tipo_usuario     = $request->tipo_usuario;
+            $usuario->password         =  Hash::make($request->password);
+            $usuario->save();
+        }   
+        
+        return redirect()->route('usuarios.index');
     }
 
     /**

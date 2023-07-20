@@ -102,10 +102,16 @@
                   <input type="text" class="form-control" id="usuario" name="usuario" value="{{ $usuario->emailuser }}" required>
                 </div>
               </div>  
-              <div class="col-md-6">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label for="email">contraseña</label>
-                  <input type="password" class="form-control" id="password" name="password" value="{{ $usuario->password }}" required>
+                  <input type="password" class="form-control" id="password" name="password">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="email">confirma tu contraseña</label>
+                  <input type="password" class="form-control" id="rpassword" name="rpassword">
                 </div>
               </div>                 
             </div>
@@ -129,41 +135,30 @@
   
 
 //Agregar producto
- /* $('#btn_guardaregistro').click(function() {    
-    
-    var nombre      = $('#nombre').val();
-    var email       = $('#email').val();    
-    var telefono    = $('#telefono').val();
-    var razonsocial = $('#razonsocial').val();
-    var rfc         = $('#rfc').val();
-    var domicilio   = $('#domicilio').val();    
-    var codigopostal= $('#codigopostal').val();
-    var emailfactura= $('#emailfactura').val();
-    var status      = 'activo';
+  $('#btn_guardaregistro').click(function() {    
+    var nombre        = $('#nombre').val();
+    var email         = $('#email').val();    
+    var password      = $('#password').val();
+    var rpassword     = $('#rpassword').val();
 
-      $.ajax({
-          url: "/clientes",
-          type: "POST",
-          data: {
-              _token: $("#csrf").val(),
-              type: 1,
-              nombre:     nombre,
-              email:      email,
-              telefono:   telefono,
-              razonsocial:razonsocial,
-              rfc:        rfc,
-              domicilio:  domicilio,
-              codigopostal:codigopostal,
-              emailfactura:emailfactura,
-              status:     status
-          },
-          cache: false,
-          success: function(dataResult){
-            alert(dataResult);                
-            //location.reload();          
-          }
-      });    
-  });*/
+
+    if (nombre == '' || nombre.length == 0 ) {
+      document.getElementById("nombre").focus();
+      return false;
+    }
+    if (email == '' || email.length == 0 ) {
+      document.getElementById("email").focus();      
+      return false;
+    }
+    if(password !== rpassword){
+      alert("la contraseña no coincide");
+      return false;
+    }
+    if(password=='' && rpassword == ''){
+      password = 'ninguno';
+    }
+  
+  });
 
   $(document).on("click", "#btn-eliminar", function () {
     var id_cliente = $(this).attr('data-id');

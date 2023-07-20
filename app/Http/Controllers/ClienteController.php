@@ -122,7 +122,12 @@ class ClienteController extends Controller
         $cliente->codigopostal  = $request->codigopostal;
         $cliente->emailfactura  = $request->emailfactura;
         
+        
         $usuario = User::findOrFail($cliente->id_user);
+        if ($request->password == ''){                        
+        }else{
+            $usuario->password         = Hash::make($request->password);
+        }
         $usuario->email         = $request->usuario;
         $usuario->save();
 //        return $usuario;

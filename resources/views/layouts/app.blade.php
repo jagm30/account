@@ -134,7 +134,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/usuarios/create" class="nav-link" id="menuregistrarusuario">
+                <a href="/usuarios/create" class="nav-link" id="menuregistrausuario">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar usuario</p>
                 </a>
