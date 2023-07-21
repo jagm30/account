@@ -6,6 +6,7 @@ use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\CategoriaproductoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ServicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::resource('/usuarios', UsuarioController::class);
 Route::get('/clientes/edicion/{id_cliente}/{apaterno}/{amaterno}/{nombre}/{email}/{telefono}/{direccion}/{ciudad}/{estado}',[App\Http\Controllers\ClienteController::class,'edicion'])->name('edicioncliente');
 Route::get('clientes/delete/{id}', [App\Http\Controllers\ClienteController::class,'destroy'])->name('eliminacliente');
 Route::resource('/clientes', ClienteController::class);
+Route::get('servicios/delete/{id}', [App\Http\Controllers\ServicioController::class,'destroy'])->name('eliminaservicio');
+Route::resource('/servicios', ServicioController::class);
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -22,7 +22,10 @@ class CreateClientesTable extends Migration
             $table->string('rfc',30);
             $table->string('domicilio',50);
             $table->string('codigopostal',10);
-            $table->string('emailfactura',,100);            
+            $table->string('emailfactura',100);
+            $table->string('status',20);
+            $table->string('constanciasituacion',100)->nullable();
+            $table->integer('id_user')->nullable();
             $table->timestamps();
         });
     }

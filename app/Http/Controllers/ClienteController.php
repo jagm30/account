@@ -59,9 +59,7 @@ class ClienteController extends Controller
         $cliente->id_user = $user->id;
         $cliente->save();
         return redirect()->route('clientes.index');
-        return json_encode(array(
-            "Estado"=>"Agregado correctamente"
-        ));
+
     }
 
     /**

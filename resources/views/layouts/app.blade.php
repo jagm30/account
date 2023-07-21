@@ -165,6 +165,29 @@
               </li>                                     
             </ul>
           </li>
+          <li class="nav-item" id="menuservicio">
+            <a href="#" class="nav-link" id="menuservicio2">
+              <i class="nav-icon fas fa-user-alt"></i>
+              <p>
+                SERVICIOS
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/servicios" class="nav-link" id="menuconsultaservicio">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Consultar servicios</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a href="/servicios/create" class="nav-link" id="menuregistraservicio">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Registrar servicio</p>
+                </a>
+              </li>                                     
+            </ul>
+          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
