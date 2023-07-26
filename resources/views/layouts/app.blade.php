@@ -81,6 +81,10 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library  menu-is-opening menu-open-->
+        @guest
+        @else
+        @if(Auth::user()->tipo_usuario == 'admin')
+        
           <li class="nav-item ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -223,7 +227,38 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-          </li>         
+          </li> 
+        @endif
+          <!-- 
+            Inicia vista de clientes!            
+          --> 
+          @if(Auth::user()->tipo_usuario=="cliente")
+          <li class="nav-item" id="menucliedocuenta">
+            <a href="#" class="nav-link" id="menucliedocuenta2">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Estado de cuenta
+              </p>
+            </a>
+          </li> 
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Mis servicios
+              </p>
+            </a>
+          </li> 
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Mis facturas
+              </p>
+            </a>
+          </li> 
+          @endif
+          @endguest
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

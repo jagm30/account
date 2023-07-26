@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Role;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -56,6 +56,8 @@ class ClienteController extends Controller
             'password'      => Hash::make($request->rfc),
             'tipo_usuario'  => 'cliente',
         ]);
+        $user->roles()->attach(Role::where('name','cliente')->first());
+        return $user;
         $cliente->id_user = $user->id;
         $cliente->save();
         return redirect()->route('clientes.index');

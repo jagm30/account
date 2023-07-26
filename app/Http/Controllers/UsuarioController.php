@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Role;
 use App\Models\Usuario;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
@@ -31,8 +32,10 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        //para validar que tipo de usuarios pueden entrar a la vista o controlador
+        $request->user()->authorizeRoles(['admin']);
         return view('usuarios.create'); 
     }
 
@@ -52,6 +55,9 @@ class UsuarioController extends Controller
             'password'      => Hash::make($request->password),
             'tipo_usuario'  => $request->tipo_usuario,
         ]);
+        $user->roles()->attach(Role::where('name',$request->tipo_usuario)->first());
+        return $user;
+
         return redirect()->route('usuarios.index');
       /*  return json_encode(array(
             "Estado"=>"Agregado correctamente"

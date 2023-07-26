@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
 
 
 class ServicioController extends Controller
@@ -132,5 +133,19 @@ class ServicioController extends Controller
         $servicio   = Servicio::findOrFail($id);
         $servicio->delete();
         return response()->json(['data' => "Eliminado correctamente..."]);
+    }
+
+    public function estadoCuenta(Request $request){
+        $id_user = Auth::id();
+        $cliente = Cliente::where('id_user',$id_user)->first();
+        //return $cliente->id_user;
+        //return $id_cliente;
+        //return $id_cliente;
+       // return $cliente->id;
+        $servicios  = Servicio::where('id_cliente',$cliente->id)->get();
+       // $servicios = DB::table('servicios')->where('id_cliente', 8)->first();
+        //return $servicios;
+        //return $usuarios;          
+        return view('servicios.estadocuenta', compact('servicios')); 
     }
 }

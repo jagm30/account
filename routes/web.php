@@ -33,6 +33,8 @@ Route::get('/clientes/edicion/{id_cliente}/{apaterno}/{amaterno}/{nombre}/{email
 Route::get('clientes/delete/{id}', [App\Http\Controllers\ClienteController::class,'destroy'])->name('eliminacliente');
 Route::resource('/clientes', ClienteController::class);
 Route::get('servicios/delete/{id}', [App\Http\Controllers\ServicioController::class,'destroy'])->name('eliminaservicio');
+
+Route::get('servicios/estadoCuenta/', [App\Http\Controllers\ServicioController::class,'estadoCuenta'])->name('estadoCuenta');
 Route::resource('/servicios', ServicioController::class);
 
 Auth::routes();
