@@ -215,19 +215,7 @@
                 </a>
               </li>                        
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Cerrar sesion
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-          </li> 
+          </li>          
         @endif
           <!-- 
             Inicia vista de clientes!            
@@ -259,6 +247,19 @@
           </li> 
           @endif
           @endguest
+          <li class="nav-item">
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Cerrar sesion
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+          </li> 
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
