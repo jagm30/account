@@ -31,7 +31,7 @@
                   <td></td>
                   <td></td>
                   <td>                                
-                    <a href="/servicios/{{$servicios->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicios->id}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a>
+                    <a href="/pagoservicios/{{$servicios->id}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicios->id}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a>
                   </td>                            
                 </tr>                    
               @endforeach                

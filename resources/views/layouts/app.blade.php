@@ -222,7 +222,7 @@
           --> 
           @if(Auth::user()->tipo_usuario=="cliente")
           <li class="nav-item" id="menucliedocuenta">
-            <a href="#" class="nav-link" id="menucliedocuenta2">
+            <a href="/servicios/estadoCuenta" class="nav-link" id="menucliedocuenta2">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Estado de cuenta

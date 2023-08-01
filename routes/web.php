@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoriaproductoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\PagoservicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::get('servicios/delete/{id}', [App\Http\Controllers\ServicioController::cl
 
 Route::get('servicios/estadoCuenta/', [App\Http\Controllers\ServicioController::class,'estadoCuenta'])->name('estadoCuenta');
 Route::resource('/servicios', ServicioController::class);
+
+Route::resource('/pagoservicios', PagoservicioController::class);
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
