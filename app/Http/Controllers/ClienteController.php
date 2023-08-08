@@ -57,7 +57,7 @@ class ClienteController extends Controller
             'tipo_usuario'  => 'cliente',
         ]);
         $user->roles()->attach(Role::where('name','cliente')->first());
-        return $user;
+        //return $user;
         $cliente->id_user = $user->id;
         $cliente->save();
         return redirect()->route('clientes.index');

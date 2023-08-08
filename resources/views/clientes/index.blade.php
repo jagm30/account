@@ -34,6 +34,10 @@
                       Editar
                       </button>
                     </a>
+                    <a href="/servicios/estadoCuenta/{{$cliente->id_user}}"><button type="button" class="btn btn-info" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
+                      Edo. de cuenta
+                      </button>
+                    </a>
                   </td>                            
                   <td>                                
                     <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$cliente->id}}" class="btn btn-danger">Borrar</button>                            

@@ -135,9 +135,9 @@ class ServicioController extends Controller
         return response()->json(['data' => "Eliminado correctamente..."]);
     }
 
-    public function estadoCuenta(Request $request){
-        $id_user = Auth::id();
-        $cliente = Cliente::where('id_user',$id_user)->first();
+    public function estadoCuenta(Request $request, $id_usuario){
+//        $id_user = Auth::id();
+        $cliente = Cliente::where('id_user',$id_usuario)->first();
         //return $cliente->id_user;
         //return $id_cliente;
         //return $id_cliente;

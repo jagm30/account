@@ -85,42 +85,7 @@
         @else
         @if(Auth::user()->tipo_usuario == 'admin')
         
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Administrador
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/usuarios" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta Usuarios</p>
-                </a>
-              </li> 
-              <li class="nav-item">
-                <a href="/clientes" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta Clientes</p>
-                </a>
-              </li> 
-
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Crear estado de Cuenta</p>
-                </a>
-              </li> 
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Crear Servicios</p>
-                </a>
-              </li>            
-            </ul>
-          </li>
+    
 
           <li class="nav-item" id="menuusuario">
             <a href="#" class="nav-link" id="menuusuario2">
@@ -222,7 +187,7 @@
           --> 
           @if(Auth::user()->tipo_usuario=="cliente")
           <li class="nav-item" id="menucliedocuenta">
-            <a href="/servicios/estadoCuenta" class="nav-link" id="menucliedocuenta2">
+            <a href="/servicios/estadoCuenta/{{Auth::user()->id}}" class="nav-link" id="menucliedocuenta2">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Estado de cuenta

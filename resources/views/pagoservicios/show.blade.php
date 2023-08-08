@@ -80,9 +80,18 @@
           <div class="card-body">
             {{ csrf_field() }}
             <div class="row">
-              <div class="col-md-12">                            
+              <div class="col-md-12">   
                 <div class="form-group">
-                  <label for="constanciasituacion">Comprobante de pago</label>
+                  <label>Datos de pago</label>
+                  <p class="text-success">BBVA BANCOMER<br>
+                  DC WEB AGENCY S.A.S<br>
+                  CTA. 329080<br>
+                  CLABE: 8832303992310192<br>
+                  TARJETA: 4353 3898 2812 3920<br>
+                  </p>
+                </div>                         
+                <div class="form-group">
+                  <label for="constanciasituacion">Para validar su pago deberá adjuntar su comprobante de pago en la sección de abajo y esperar la validación en un tiempo de 12 hrs</label>
                   <input type="hidden" name="id_usuario" id="id_usuario" value="{{ Auth::user()->id}}">
                   <div class="input-group">
                     <div class="custom-file">                      
