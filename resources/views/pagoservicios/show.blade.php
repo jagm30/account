@@ -1,6 +1,6 @@
 @extends('layouts.app') 
 @section('contenidoprincipal') 
-  <form method="POST" action="/servicios" accept-charset="UTF-8" name="formcliente" enctype="multipart/form-data">
+  <form method="POST" action="/pagoservicios" accept-charset="UTF-8" name="formpagoservicios" enctype="multipart/form-data">
      <div class="card card-primary">
         <div class="card-header">
           <h3 class="card-title">Pago</h3>
@@ -12,6 +12,9 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
+                <input type="hidden" name="id_servicio" id="id_servicio" value="{{ $servicio->id }}">
+                <input type="hidden" name="id_cliente" id="id_cliente" value="{{ $servicio->id_cliente }}">
+                <input type="hidden" name="id_usuario" id="id_usuario" value="{{ Auth::user()->id}}">
                 <div class="form-group">
                   <label for="telefono">Forma de pago</label>
                   <select class="form-control" id="formapago" name="formapago" required>
@@ -44,25 +47,25 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email">Titula de tarjeta</label>
-                  <input type="text" class="form-control" id="titular" name="titular" placeholder="Ingrese el nombre del titular de la tarjeta" required>
+                  <input type="text" class="form-control" id="titular" name="titular" placeholder="Ingrese el nombre del titular de la tarjeta" >
                 </div>
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email">No. de tarjeta</label>
-                  <input type="text" class="form-control" id="ntarjeta" name="ntarjeta" placeholder="Ingrese el numero de tarjeta" required>
+                  <input type="text" class="form-control" id="ntarjeta" name="ntarjeta" placeholder="Ingrese el numero de tarjeta" >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email">Vencimiento</label>
-                  <input type="text" class="form-control" id="vencimiento" name="vencimiento" placeholder="MM/AA" required>
+                  <input type="text" class="form-control" id="vencimiento" name="vencimiento" placeholder="MM/AA" >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email">Seguridad</label>
-                  <input type="text" class="form-control" id="seguridad" name="seguridad" placeholder="CVV" required>
+                  <input type="text" class="form-control" id="seguridad" name="seguridad" placeholder="CVV" >
                 </div>
               </div>
               
@@ -90,16 +93,16 @@
                   TARJETA: 4353 3898 2812 3920<br>
                   </p>
                 </div>                         
-                <div class="form-group">
-                  <label for="constanciasituacion">Para validar su pago deberá adjuntar su comprobante de pago en la sección de abajo y esperar la validación en un tiempo de 12 hrs</label>
-                  <input type="hidden" name="id_usuario" id="id_usuario" value="{{ Auth::user()->id}}">
-                  <div class="input-group">
-                    <div class="custom-file">                      
-                      <input type="file" class="form-control" id="comprobante" name="comprobante">
-                      <label class="custom-file-label" for="contrato_doc">Seleccionar archivo</label>
-                    </div>                    
+
+                <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="comprobante" name="comprobante">
+                      <label class="custom-file-label" for="comprobante">Seleccionar archivo</label>
+                    </div>
+                    <div class="input-group-append">
+                      <span class="input-group-text">Cargar</span>
+                    </div>
                   </div>
-                </div>
               </div>
             </div>                       
           </div>

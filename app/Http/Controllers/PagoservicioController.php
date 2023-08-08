@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class PagoservicioController extends Controller
 {
@@ -42,7 +44,11 @@ class PagoservicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pagoservicio = Pagoservicio::create($request->all());
+
+        if($request->hasFile('comprobante')){
+            $pagoservicio->comprobante = $request->file('comprobante')->store('public');
+        }
     }
 
     /**
