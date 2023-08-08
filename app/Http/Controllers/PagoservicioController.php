@@ -48,9 +48,10 @@ class PagoservicioController extends Controller
 
         if($request->hasFile('comprobante')){
             $pagoservicio->comprobante = $request->file('comprobante')->store('public');
+            $pagoservicio->status = "En comprobacion";
             $pagoservicio->save();
         }
-
+        return redirect()->route('clientes.index');
     }
 
     /**

@@ -15,6 +15,7 @@
                 <input type="hidden" name="id_servicio" id="id_servicio" value="{{ $servicio->id }}">
                 <input type="hidden" name="id_cliente" id="id_cliente" value="{{ $servicio->id_cliente }}">
                 <input type="hidden" name="id_usuario" id="id_usuario" value="{{ Auth::user()->id}}">
+                <input type="hidden" name="status" id="status" value="activo">
                 <div class="form-group">
                   <label for="telefono">Forma de pago</label>
                   <select class="form-control" id="formapago" name="formapago" required>
