@@ -83,7 +83,7 @@
                with font-awesome or any other icon font library  menu-is-opening menu-open-->
         @guest
         @else
-        @if(Auth::user()->tipo_usuario == 'admin')
+        @if(Auth::user()->tipo_usuario == 'admin' or Auth::user()->tipo_usuario == 'superadmin')
         
     
 

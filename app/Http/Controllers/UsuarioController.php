@@ -35,7 +35,7 @@ class UsuarioController extends Controller
     public function create(Request $request)
     {
         //para validar que tipo de usuarios pueden entrar a la vista o controlador
-        $request->user()->authorizeRoles(['admin']);
+        $request->user()->authorizeRoles(['superadmin','admin']);
         return view('usuarios.create'); 
     }
 
@@ -56,7 +56,7 @@ class UsuarioController extends Controller
             'tipo_usuario'  => $request->tipo_usuario,
         ]);
         $user->roles()->attach(Role::where('name',$request->tipo_usuario)->first());
-        return $user;
+        //return $user;
 
         return redirect()->route('usuarios.index');
       /*  return json_encode(array(
@@ -150,9 +150,13 @@ class UsuarioController extends Controller
             return response()->json(['data' => "Cambios guardados correctamente..."]);    
         }         
     }
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $usuario   = User::findOrFail($id);
+        $request->user()->authorizeRoles(['superadmin']);
+        $usuario   = User::find($id);
+       /* if($usuario->tipo_usuario == 'superadmin'){
+            return response()->json(['data' => "Eliminado correctamente..."]);
+        }*/
         $usuario->delete();
         return response()->json(['data' => "Eliminado correctamente..."]);
     }

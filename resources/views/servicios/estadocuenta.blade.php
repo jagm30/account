@@ -22,16 +22,16 @@
             </tr>
             </thead>
             <tbody>                
-              @foreach ($servicios as $servicios)                        
+              @foreach ($servicios as $servicio)                        
                 <tr>                            
-                  <td>{{ $servicios->fecha_contrato }}</td>                            
-                  <td>{{ $servicios->descripcion }}</td>
-                  <td>{{ $servicios->precio }}</td>
-                  <td>{{ $servicios->status }}</td>
+                  <td>{{ $servicio->fecha_contrato }}</td>                            
+                  <td>{{ $servicio->descripcion }}</td>
+                  <td>{{ $servicio->precio }}</td>
+                  <td style="color: @if($servicio->status == 'En comprobacion')red @endif @if($servicio->status == 'activo') blue @endif ;">{{ $servicio->status }}</td>
                   <td></td>
                   <td></td>
                   <td>                                
-                    <a href="/pagoservicios/{{$servicios->id}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicios->id}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a>
+                    <a href="/pagoservicios/{{$servicio->id}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a>
                   </td>                            
                 </tr>                    
               @endforeach                
