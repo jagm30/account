@@ -28,10 +28,12 @@
                   <td>{{ $servicio->descripcion }}</td>
                   <td>{{ $servicio->precio }}</td>
                   <td style="color: @if($servicio->status == 'En comprobacion')red @endif @if($servicio->status == 'activo') blue @endif ;">{{ $servicio->status }}</td>
-                  <td></td>
-                  <td></td>
-                  <td>                                
-                    <a href="/pagoservicios/{{$servicio->id}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a>
+                  <td>{{ $servicio->fechapago }}</td>
+                  <td>{{ $servicio->formapago }}</td>
+                  <td>
+                    @if($servicio->status == 'En comprobacion') En comprobacion @endif
+                    @if($servicio->status == 'activo') 
+                    <a href="/pagoservicios/{{$servicio->ids}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a> @endif
                   </td>                            
                 </tr>                    
               @endforeach                

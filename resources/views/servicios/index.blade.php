@@ -26,7 +26,7 @@
                   <td>{{ $servicios->fecha_contrato }}</td>                            
                   <td>{{ $servicios->descripcion }}</td>
                   <td>{{ $servicios->precio }}</td>
-                  <td>{{ $servicios->status }}</td>
+                  <td style=" color: @if($servicios->status=='activo') blue @endif @if($servicios->status=='En comprobacion') red @endif ; " > {{ $servicios->status }} </td>
                   <td>{{ $servicios->modalidad}}</td>
                   <td>                                
                     <a href="/servicios/{{$servicios->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicios->id}}" data-toggle="modal" data-target="#modal-default">Editar</button></a>

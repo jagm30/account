@@ -142,7 +142,13 @@ class ServicioController extends Controller
         //return $id_cliente;
         //return $id_cliente;
        // return $cliente->id;
-        $servicios  = Servicio::where('id_cliente',$cliente->id)->get();
+        //$servicios  = Servicio::where('id_cliente',$cliente->id)->get();7
+
+        $servicios = DB::table('servicios')
+                        ->select('fecha_contrato','descripcion','servicios.precio','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago')
+                        ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
+                        ->where('servicios.id_cliente',$cliente->id)
+                        ->get();
        // $servicios = DB::table('servicios')->where('id_cliente', 8)->first();
         //return $servicios;
         //return $usuarios;          

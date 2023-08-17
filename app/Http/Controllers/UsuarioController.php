@@ -154,9 +154,10 @@ class UsuarioController extends Controller
     {
         $request->user()->authorizeRoles(['superadmin']);
         $usuario   = User::find($id);
-       /* if($usuario->tipo_usuario == 'superadmin'){
-            return response()->json(['data' => "Eliminado correctamente..."]);
-        }*/
+       // return response()->json(['data' => $usuario->name]);
+        if($usuario->tipo_usuario == 'superadmin'){
+            return response()->json(['data' => "No se puede eliminar este usuario, contacte a soporte tecnico..."]);
+        }
         $usuario->delete();
         return response()->json(['data' => "Eliminado correctamente..."]);
     }
