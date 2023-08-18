@@ -194,8 +194,8 @@
               </p>
             </a>
           </li> 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item" id="servicioscliente">
+            <a href="/servicios/" class="nav-link" id="servicioscliente2">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Mis servicios

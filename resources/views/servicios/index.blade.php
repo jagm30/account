@@ -14,23 +14,27 @@
             <tr>
                 <th scope="col">Fecha de contrato</th>   
                 <th scope="col">Servicio</th>                    
-                <th scope="col">Precio</th>                    
+                <th scope="col">Contrato</th>                    
                 <th scope="col">Estado</th>                    
-                <th scope="col">Modalidad</th>                                    
+                <th scope="col">Servicio</th>
+                <th scope="col">Fecha de finalización</th>                                    
                 <th scope="col">Acción</th>                     
             </tr>
             </thead>
             <tbody>                
-              @foreach ($servicios as $servicios)                        
+              @foreach ($servicios as $servicio)                        
                 <tr>                            
-                  <td>{{ $servicios->fecha_contrato }}</td>                            
-                  <td>{{ $servicios->descripcion }}</td>
-                  <td>{{ $servicios->precio }}</td>
-                  <td style=" color: @if($servicios->status=='activo') blue @endif @if($servicios->status=='En comprobacion') red @endif ; " > {{ $servicios->status }} </td>
-                  <td>{{ $servicios->modalidad}}</td>
-                  <td>                                
-                    <a href="/servicios/{{$servicios->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicios->id}}" data-toggle="modal" data-target="#modal-default">Editar</button></a>
-                    <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$servicios->id}}" class="btn btn-danger">Borrar</button>
+                  <td>{{ $servicio->fecha_contrato }}</td>                            
+                  <td>{{ $servicio->descripcion }}</td>
+                  <td><a href="{{Storage::url($servicio->contrato_doc) }}" target="_blank">Descargar</a></td>
+                  <td style=" color: @if($servicio->status=='activo') blue @endif @if($servicio->status=='En comprobacion') red @endif ; " > {{ $servicio->status }} </td>
+                  <td>{{ $servicio->modalidad}}</td>
+                  <td>{{ $servicio->fecha_finaliza}}</td>
+                  <td>     
+                    @if(Auth::user()->tipo_usuario!="cliente")                           
+                    <a href="/servicios/{{$servicio->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Editar</button></a>
+                    <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$servicio->id}}" class="btn btn-danger">Borrar</button>
+                    @endif
                   </td>                            
                 </tr>                    
               @endforeach                
@@ -38,10 +42,11 @@
             <tfoot>
             <tr>
                 <th scope="col">Fecha de contrato</th>   
-                <th scope="col">Servicio</th>                    
-                <th scope="col">Precio</th>                    
+                <th scope="col">Servicio</th>
+                <th scope="col">Fecha de finalización</th>                    
+                <th scope="col">Contrato</th>                    
                 <th scope="col">Estado</th>                    
-                <th scope="col">Modalidad</th>                                    
+                <th scope="col">Servicio</th>                                    
                 <th scope="col">Acción</th>           
             </tr>
             </tfoot>
@@ -60,10 +65,9 @@
 <script>
   (function ($) {
 
-  $("#menuservicio").addClass("nav-item menu-open");
-  $("#menuservicio2").addClass("nav-link active");
-  $("#menuconsultaservicio").addClass("important nav-link active"); 
-
+  $("#servicioscliente").addClass("nav-item menu-open");
+  $("#servicioscliente2").addClass("nav-link active");
+  
  $(document).on("click", "#btneditar", function () {
     //alert("accediendo a la edicion..."+$(this).attr('data-id'));
     var id_usuario = $(this).attr('data-id');

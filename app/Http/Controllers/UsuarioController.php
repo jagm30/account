@@ -20,8 +20,9 @@ class UsuarioController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['superadmin','admin']);
         $usuarios = User::all();     
         //return $usuarios;          
         return view('usuarios.index', compact('usuarios')); 
