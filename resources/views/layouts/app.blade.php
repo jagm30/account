@@ -159,29 +159,7 @@
           </li>         
         @endif
         @if(Auth::user()->tipo_usuario == 'contador')
-          <li class="nav-item" id="menuusuario">
-            <a href="#" class="nav-link" id="menucontadorusuario1">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                USUARIOS
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/contador" class="nav-link" id="menucontadorusuario1_1">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta Usuarios</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/usuarios/create" class="nav-link" id="menucontadorusuario1_2">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Registrar usuario</p>
-                </a>
-              </li>                        
-            </ul>
-          </li>
+
 
           <li class="nav-item" id="menucontador">
             <a href="#" class="nav-link" id="menucontadorcliente">
