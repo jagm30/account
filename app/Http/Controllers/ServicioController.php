@@ -25,7 +25,7 @@ class ServicioController extends Controller
         $this->middleware('auth');
     }
     public function index()
-    {
+    {        
         $servicios  = Servicio::all();
         $clientes   = Cliente::all();
         //return $usuarios;          
@@ -57,10 +57,14 @@ class ServicioController extends Controller
             $servicio = Servicio::create($request->all());
             if($request->hasFile('contrato_doc')){
                 $servicio->contrato_doc = $request->file('contrato_doc')->store('public');
+            }            
+            $servicio->save();        
+            if(auth()->user()->tipo_usuario=='contador'){
+                return redirect()->route('contador.index');        
+            }else{
+                return redirect()->route('servicios.index');        
             }
             
-            $servicio->save();
-            return redirect()->route('servicios.index');        
         } catch (\Exception $e) {
             
             return response()->json(['data' => $e->getMessage()]);  

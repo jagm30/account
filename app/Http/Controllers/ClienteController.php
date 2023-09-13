@@ -60,8 +60,11 @@ class ClienteController extends Controller
         //return $user;
         $cliente->id_user = $user->id;
         $cliente->save();
-        return redirect()->route('clientes.index');
-
+        if(auth()->user()->tipo_usuario=='contador'){
+            return redirect()->route('contador.index');        
+        }else{
+            return redirect()->route('clientes.index');
+        }        
     }
 
     /**
@@ -137,7 +140,12 @@ class ClienteController extends Controller
         }
         $cliente->save();
         
-        return redirect()->route('clientes.index');
+        if(auth()->user()->tipo_usuario=='contador'){
+            return redirect()->route('contador.index');        
+        }else{
+            return redirect()->route('clientes.index');
+        }
+        
         
 
     }

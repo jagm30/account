@@ -128,18 +128,10 @@
 @section("scriptpie")
 <script>
   (function ($) {
-  @if(auth()->user()->tipo_usuario=='contador'){
-    $("#menucontador").addClass("nav-item menu-open");
-    $("#menucontadorcliente").addClass("nav-link active");
-    $("#menucontadorcliente1").addClass("important nav-link active"); 
-  }
-  @else{
-    $("#menuecliente").addClass("nav-item menu-open");
-    $("#menuecliente2").addClass("nav-link active");
-    $("#menuconsultacliente").addClass("important nav-link active"); 
-  }
-  @endif
   
+  $("#menuecliente").addClass("nav-item menu-open");
+  $("#menuecliente2").addClass("nav-link active");
+  $("#menuconsultacliente").addClass("important nav-link active"); 
   
 
 //Agregar producto

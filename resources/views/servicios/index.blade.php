@@ -31,10 +31,14 @@
                   <td>{{ $servicio->modalidad}}</td>
                   <td>{{ $servicio->fecha_finaliza}}</td>
                   <td>     
-                    @if(Auth::user()->tipo_usuario!="cliente")                           
+                    @if(Auth::user()->tipo_usuario=="superadmin" or Auth::user()->tipo_usuario=="admin")                           
                     <a href="/servicios/{{$servicio->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Editar</button></a>
                     <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$servicio->id}}" class="btn btn-danger">Borrar</button>
                     @endif
+                    @if(Auth::user()->tipo_usuario=="contador")                           
+                    <a href="/servicios/{{$servicio->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Editar</button></a>
+                    @endif
+
                   </td>                            
                 </tr>                    
               @endforeach                
@@ -64,9 +68,17 @@
 @section("scriptpie")
 <script>
   (function ($) {
-
-  $("#servicioscliente").addClass("nav-item menu-open");
-  $("#servicioscliente2").addClass("nav-link active");
+  
+  @if(auth()->user()->tipo_usuario=='contador'){
+    $("#menucontadorservicio").addClass("nav-item menu-open");
+    $("#menucontadorservicio1").addClass("nav-link active");
+    $("#menucontadorservicio1_1").addClass("important nav-link active"); 
+  }
+  @else{
+    $("#servicioscliente").addClass("nav-item menu-open");
+    $("#servicioscliente2").addClass("nav-link active");
+  }
+  @endif
   
  $(document).on("click", "#btneditar", function () {
     //alert("accediendo a la edicion..."+$(this).attr('data-id'));

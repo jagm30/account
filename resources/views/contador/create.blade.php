@@ -88,19 +88,8 @@
 
           <div class="card-footer">
             <button type="submit" class="btn btn-primary" id="btn_guardaregistro">Guardar</button>
-          </div>        
-
-          <div class="col-sm-12">
-            <div class="position-relative p-3 bg-green" style="height: 80px">
-              <div class="ribbon-wrapper ribbon-lg">
-                <div class="ribbon bg-danger">
-                  Importante
-                </div>
-              </div>
-              La cuenta de usuario se crea automaticamente, el nombre de usuario se toma de los datos personales del campo correo electronico y la contraseña es el RFC.<br />
-            </div>
-          </div>
-
+          </div>          
+          
       </div>
     </form>   
       <!-- /.card -->
@@ -109,20 +98,11 @@
 @endsection
 @section("scriptpie")
 <script>
-  (function ($) {  
+  (function ($) {
+  $("#menuecliente").addClass("nav-item menu-open");
+  $("#menuecliente2").addClass("nav-link active");
+  $("#menuregistracliente").addClass("important nav-link active"); 
   
-  @if(auth()->user()->tipo_usuario=='contador'){
-    $("#menucontador").addClass("nav-item menu-open");
-    $("#menucontadorcliente").addClass("nav-link active");
-    $("#menucontadorcliente2").addClass("important nav-link active"); 
-  }
-  @else{
-    $("#menuecliente").addClass("nav-item menu-open");
-    $("#menuecliente2").addClass("nav-link active");
-    $("#menuregistracliente").addClass("important nav-link active"); 
-  }
-  @endif
-
  $('#btn_guardaregistro').click(function() {    
     
     var nombre      = $('#nombre').val();

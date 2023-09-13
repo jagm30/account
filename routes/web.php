@@ -8,6 +8,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\PagoservicioController;
+use App\Http\Controllers\ContadorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,8 @@ Route::get('servicios/estadoCuenta/{id_usuario}', [App\Http\Controllers\Servicio
 Route::resource('/servicios', ServicioController::class);
 
 Route::resource('/pagoservicios', PagoservicioController::class);
+Route::get('contador/createservicio/{id_cliente}', [App\Http\Controllers\ContadorController::class,'createservicio'])->name('createservicio');
+Route::resource('/contador', ContadorController::class);
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
