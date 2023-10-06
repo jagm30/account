@@ -102,4 +102,5 @@ class ContadorController extends Controller
         return view('contador.createservicio', compact('date','cliente')); 
 
     }
+    
 }

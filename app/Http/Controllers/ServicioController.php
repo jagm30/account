@@ -140,22 +140,25 @@ class ServicioController extends Controller
     }
 
     public function estadoCuenta(Request $request, $id_usuario){
-//        $id_user = Auth::id();
+
         $cliente = Cliente::where('id_user',$id_usuario)->first();
-        //return $cliente->id_user;
-        //return $id_cliente;
-        //return $id_cliente;
-       // return $cliente->id;
-        //$servicios  = Servicio::where('id_cliente',$cliente->id)->get();7
 
         $servicios = DB::table('servicios')
                         ->select('fecha_contrato','descripcion','servicios.precio','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago')
                         ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
                         ->where('servicios.id_cliente',$cliente->id)
                         ->get();
-       // $servicios = DB::table('servicios')->where('id_cliente', 8)->first();
-        //return $servicios;
-        //return $usuarios;          
+        return view('servicios.estadocuenta', compact('servicios')); 
+    }
+    public function estadoCuentaAll(Request $request, $id_usuario){
+
+        $cliente = Cliente::where('id_user',$id_usuario)->first();
+
+        $servicios = DB::table('servicios')
+                        ->select('fecha_contrato','descripcion','servicios.precio','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago')
+                        ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
+                        ->where('servicios.id_cliente',$cliente->id)
+                        ->get();
         return view('servicios.estadocuenta', compact('servicios')); 
     }
 }

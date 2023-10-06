@@ -158,14 +158,14 @@
             </ul>
           </li>         
         @endif
-        @if(Auth::user()->tipo_usuario == 'contador')
+        @if(Auth::user()->tipo_usuario == 'contador' )
 
 
           <li class="nav-item" id="menucontador">
             <a href="#" class="nav-link" id="menucontadorcliente">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
-                CLIENTES
+                Clientes
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -188,7 +188,7 @@
             <a href="#" class="nav-link" id="menucontadorservicio1">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
-                SERVICIOS
+                Servicios
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -197,6 +197,23 @@
                 <a href="/servicios" class="nav-link" id="menucontadorservicio1_1">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consultar servicios</p>
+                </a>
+              </li>                                    
+            </ul>
+          </li>
+          <li class="nav-item" id="menucontadorservicio">
+            <a href="#" class="nav-link" id="menucontadorservicio1">
+              <i class="nav-icon fas fa-user-alt"></i>
+              <p>
+                Estados de cuenta
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/servicios" class="nav-link" id="menucontadorservicio1_1">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Consultar</p>
                 </a>
               </li>                                    
             </ul>
