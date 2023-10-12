@@ -46,7 +46,7 @@ class PagoservicioController extends Controller
     {
         $pagoservicio = Pagoservicio::create($request->all());
         $servicio     = Servicio::where('id',$pagoservicio->id_servicio)->first();
-        $servicio->status = 'En comprobacion';
+        $servicio->status = 'Revision';
         $servicio->save();        
         if($request->hasFile('comprobante')){
             $pagoservicio->comprobante = $request->file('comprobante')->store('public');

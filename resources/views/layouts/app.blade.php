@@ -201,8 +201,8 @@
               </li>                                    
             </ul>
           </li>
-          <li class="nav-item" id="menucontadorservicio">
-            <a href="#" class="nav-link" id="menucontadorservicio1">
+          <li class="nav-item" id="menucontadoredocta">
+            <a href="#" class="nav-link" id="menucontadoredocta1">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
                 Estados de cuenta
@@ -211,7 +211,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/servicios" class="nav-link" id="menucontadorservicio1_1">
+                <a href="/contador/cuentaclientes" class="nav-link" id="menucontadoredocta1_1">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consultar</p>
                 </a>

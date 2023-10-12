@@ -34,12 +34,15 @@ Route::resource('/usuarios', UsuarioController::class);
 Route::get('/clientes/edicion/{id_cliente}/{apaterno}/{amaterno}/{nombre}/{email}/{telefono}/{direccion}/{ciudad}/{estado}',[App\Http\Controllers\ClienteController::class,'edicion'])->name('edicioncliente');
 Route::get('clientes/delete/{id}', [App\Http\Controllers\ClienteController::class,'destroy'])->name('eliminacliente');
 Route::resource('/clientes', ClienteController::class);
-Route::get('servicios/delete/{id}', [App\Http\Controllers\ServicioController::class,'destroy'])->name('eliminaservicio');
 
+Route::get('servicios/delete/{id}', [App\Http\Controllers\ServicioController::class,'destroy'])->name('eliminaservicio');
 Route::get('servicios/estadoCuenta/{id_usuario}', [App\Http\Controllers\ServicioController::class,'estadoCuenta'])->name('estadoCuenta');
 Route::resource('/servicios', ServicioController::class);
 
 Route::resource('/pagoservicios', PagoservicioController::class);
+
+Route::get('contador/cuentaclientes', [App\Http\Controllers\ContadorController::class,'cuentasclientes'])->name('cuentasClientes');
+Route::get('contador/cuentacliente/{id}', [App\Http\Controllers\ContadorController::class,'cuentacliente'])->name('cuentaCliente');
 Route::get('contador/createservicio/{id_cliente}', [App\Http\Controllers\ContadorController::class,'createservicio'])->name('createservicio');
 Route::resource('/contador', ContadorController::class);
 

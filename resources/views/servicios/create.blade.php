@@ -32,7 +32,7 @@
                 <div class="form-group">
                   <label for="nombre">Fecha de contrato</label>
                   <input type="date" class="form-control" id="fecha_contrato" name="fecha_contrato" required value="{{ $date }}">
-                  <input type="hidden" class="form-control" id="status" name="status" value="activo" required>
+                  <input type="hidden" class="form-control" id="status" name="status" value="Activo" required>
                 </div>
               </div>                
               <div class="col-md-6">

@@ -100,7 +100,26 @@ class ContadorController extends Controller
         $date = $date->format('Y-m-d');
         $cliente   = Cliente::findOrFail($id_cliente);
         return view('contador.createservicio', compact('date','cliente')); 
-
+    }
+    public function cuentasClientes(Request $request){
+        //$cliente = Cliente::where('id_user',$id_usuario)->first();
+        $servicios = DB::table('servicios')
+                        ->select('clientes.nombre as nomcliente','fecha_contrato','descripcion','servicios.precio','fecha_finaliza','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago','servicios.created_at as creacion')
+                        ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
+                        ->leftjoin('clientes','servicios.id_cliente','=','clientes.id')
+                        ->get();
+        //return $servicios;
+        return view('contador.estadocuenta', compact('servicios'));
+    }
+    public function cuentaCliente(Request $request, $id){
+        $servicio    = DB::table('servicios')
+                        ->select('clientes.nombre as nomcliente','servicios.id_cliente','fecha_contrato','descripcion','servicios.precio','fecha_finaliza','servicios.status as statusservicio','servicios.id as ids','servicios.modalidad','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.contrato_doc','pagoservicios.formapago','pagoservicios.fechapago','pagoservicios.status as statuspago','servicios.created_at as creacion','servicios.created_at as creacion')
+                        ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
+                        ->leftjoin('clientes','servicios.id_cliente','=','clientes.id')
+                        ->where('servicios.id',$id)
+                        ->first();
+        $clientes   = Cliente::all();
+        return view('contador.edit', compact('servicio','clientes')); 
     }
     
 }

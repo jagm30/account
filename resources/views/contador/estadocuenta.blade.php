@@ -13,27 +13,29 @@
             <thead>
             <tr>
                 <th scope="col">Fecha de contrato</th>   
-                <th scope="col">Servicio</th>                    
+                <th scope="col">Cliente</th>
+                <th scope="col">Servicio</th>
                 <th scope="col">Precio</th>                    
                 <th scope="col">Estado</th>                    
-                <th scope="col">Fecha de pago</th>
+                <th scope="col">Vencimiento</th>
                 <th scope="col">Metodo de pago</th>
-                <th scope="col">Acción</th>                     
+                <th scope="col">Factura</th>                     
             </tr>
             </thead>
             <tbody>                
               @foreach ($servicios as $servicio)                        
                 <tr>                            
                   <td>{{ $servicio->fecha_contrato }}</td>                            
+                  <td>{{ $servicio->nomcliente }}</td>
                   <td>{{ $servicio->descripcion }}</td>
-                  <td>{{ $servicio->precio }}</td>
+                  <td>$ {{ number_format($servicio->precio,2) }}</td>
                   <td style="color: @if($servicio->status == 'En comprobacion')red @endif @if($servicio->status == 'activo') blue @endif ;">{{ $servicio->status }}</td>
-                  <td>{{ $servicio->fechapago }}</td>
+                  <td>{{ $servicio->fecha_finaliza }}</td>
                   <td>{{ $servicio->formapago }}</td>
                   <td>
                     @if($servicio->status == 'En comprobacion') En comprobacion @endif
                     @if($servicio->status == 'activo') 
-                    <a href="/pagoservicios/{{$servicio->ids}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a> @endif
+                    <a href="/contador/cuentacliente/{{$servicio->ids}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Ver / cargar factura</button></a> @endif
                   </td>                            
                 </tr>                    
               @endforeach                
@@ -41,12 +43,13 @@
             <tfoot>
             <tr>
                 <th scope="col">Fecha de contrato</th>   
+                <th scope="col">Cliente</th>
                 <th scope="col">Servicio</th>                    
                 <th scope="col">Precio</th>                    
                 <th scope="col">Estado</th>                    
-                <th scope="col">Fecha de pago</th>
+                <th scope="col">Vencimiento</th>
                 <th scope="col">Metodo de pago</th>                                  
-                <th scope="col">Acción</th>           
+                <th scope="col">Factura</th>           
             </tr>
             </tfoot>
           </table>
@@ -64,8 +67,9 @@
 <script>
   (function ($) {
 
-  $("#menucliedocuenta").addClass("nav-item menu-open");
-  $("#menucliedocuenta2").addClass("nav-link active");
+$("#menucontadoredocta").addClass("nav-item menu-open");
+  $("#menucontadoredocta2").addClass("nav-link active");
+  $("#menucontadoredocta1_1").addClass("important nav-link active"); 
 
  $(document).on("click", "#btneditar", function () {
     //alert("accediendo a la edicion..."+$(this).attr('data-id'));

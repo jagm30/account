@@ -1,6 +1,6 @@
 @extends('layouts.app') 
 @section('contenidoprincipal') 
-  <form method="POST" action="{{ route('clientes.update', $cliente->id) }}" accept-charset="UTF-8" enctype="multipart/form-data">
+  <form method="POST" action="{{ route('contador.update', $servicio->ids) }}" accept-charset="UTF-8" enctype="multipart/form-data">
     @csrf
     {{ method_field('PUT') }}
      <div class="card card-primary">
@@ -15,112 +15,130 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="nombre">Nombre</label>
-                  <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $cliente->nombre }}" required>
+                  <label for="telefono">Cliente</label>
+                  <select class="form-control" id="id_cliente" name="id_cliente" readonly>
+                      <option value="{{ $servicio->id_cliente }}" >{{ $servicio->nomcliente }}</option>
+                  </select>
                 </div>
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="email">Correo electronico</label>
-                  <input type="email" class="form-control" id="email" name="email" value="{{ $cliente->email }}" required>
+                  <label for="nombre">Fecha de creación</label>
+                  <input type="text" class="form-control" id="creacion" name="creacion" readonly value="{{ $servicio->creacion }}">
+                  <input type="hidden" class="form-control" id="status" name="status" value="activo" required>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="email">Servicio</label>
+                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese la descripción del servicio" readonly value="{{ $servicio->descripcion}}">
                 </div>
               </div>  
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
-                  <label for="telefono">Teléfono</label>
-                  <input type="text" class="form-control" id="telefono" name="telefono" value="{{ $cliente->telefono }}" required>
+                  <label for="nombre">Fecha de contrato</label>
+                  <input type="date" class="form-control" id="fecha_contrato" name="fecha_contrato" readonly value="{{ $servicio->fecha_contrato }}">
+                  <input type="hidden" class="form-control" id="status" name="status" value="activo" required>
                 </div>
               </div>                
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="telefono">Modalidad</label>
+                  <select class="form-control" id="modalidad" name="modalidad" readonly>
+                    <option value="norecurrente" @if($servicio->modalidad == 'norecurrente') selected="true" @endif>Una sola exhibición</option>
+                    <option value="recurrente" @if($servicio->modalidad == 'recurrente') selected="true" @endif>Recurrente</option>
+                  </select>
+                </div>
+              </div>     
+              <div class="col-md-6" id="contrecurrente" style="@if($servicio->modalidad == 'norecurrente') display: none;@endif">
+                <div class="form-group">
+                  <label for="telefono">Fecha recurrente</label>
+                  <input type="date" class="form-control" id="fecha_recurrente" name="fecha_recurrente"  value="{{ $servicio->fecha_recurrente }}">
+                </div>
+              </div>
+              <div class="col-md-6" id="contrecurrente2" style="@if($servicio->modalidad == 'norecurrente') display: none;@endif">
+                <div class="form-group">
+                  <label for="telefono">Vencimiento recurrente</label>
+                  <input type="date" class="form-control" id="fechaf_recurrente" name="fechaf_recurrente"  value="{{ $servicio->fechaf_recurrente }}">
+                </div>
+              </div>
+
+              <div class="col-md-4" id="contnrecurrente" style="@if($servicio->modalidad == 'recurrente') display: none;@endif" >
+                <div class="form-group">
+                  <label for="telefono">Fecha Vencimiento</label>
+                  <input type="date" class="form-control" id="fecha_finaliza" name="fecha_finaliza"  value="{{ $servicio->fecha_finaliza }}" readonly>
+                </div>                
+            </div>
+            <div class="col-md-4" >
+                <div class="form-group">
+                  <label for="telefono">Precio</label>
+                  <input type="number" class="form-control" id="precio" name="precio" required value="{{ $servicio->precio }}" readonly>
+                </div>                
+            </div>
+            <div class="col-md-4" >
+                <div class="form-group">
+                  <label for="constanciasituacion">Contrato <br> @if($servicio->contrato_doc!='') <a href="{{ Storage::url($servicio->contrato_doc) }}" target="_blank">Descargar  contrato<img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</label>
+                </div>                
+            </div>          
+
+              <div class="col-md-4">                            
+                <div class="form-group">
+                  <label for="constanciasituacion">Estado del servicio{{ $servicio->statuspago}}</label>
+                  <select class="form-control" id="statusservicio" name="statusservicio" >
+                    <option value="Activo" @if($servicio->statusservicio == 'Activo') selected="true" @endif>Activo</option>
+                    <option value="Finalizado" @if($servicio->statusservicio == 'Finalizado') selected="true" @endif>Finalizado</option>
+                    <option value="Suspendido" @if($servicio->statusservicio == 'Suspendido') selected="true" @endif>Suspendido</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>  
             </div>
           </div>
-      </div>
-      <!-- /.card -->
 
-     <div class="card card-primary">
-        <div class="card-header">
-          <h3 class="card-title">Empresa</h3>
+    </div>
+    <div class="card card-primary">
+        <div class="card-header" style="background-color: green;">
+          <h3 class="card-title">Datos del pago</h3>
         </div>
         <!-- /.card-header -->
-        <!-- form start -->        
-        
+        <!-- form start -->                
           <div class="card-body">
             {{ csrf_field() }}
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-4">                            
                 <div class="form-group">
-                  <label for="nombre">Razón social</label>
-                  <input type="text" class="form-control" id="razonsocial" name="razonsocial" value="{{ $cliente->razonsocial }}" required>
-                </div>
-                <div class="form-group">
-                  <label for="nombre">RFC</label>
-                  <input type="text" class="form-control" id="rfc" name="rfc" value="{{ $cliente->rfc }}" required>
-                </div>
-                <div class="form-group">
-                  <label for="email">Correo electronico</label>
-                  <input type="email" class="form-control" id="emailfactura" name="emailfactura" value="{{ $cliente->emailfactura }}" required>
+                  <label for="constanciasituacion">Fecha de pago</label>
+                  <input type="date" class="form-control" id="fecha_finaliza" name="fecha_finaliza"  value="{{ $servicio->fechapago }}" readonly>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">                            
                 <div class="form-group">
-                  <label for="telefono">Domicilio fiscal</label>
-                  <input type="text" class="form-control" id="domicilio" name="domicilio" value="{{ $cliente->domicilio }}" required>
-                </div>
-                <div class="form-group">
-                  <label for="telefono">Codigo postal</label>
-                  <input type="text" class="form-control" id="codigopostal" name="codigopostal" value="{{ $cliente->codigopostal }}" required>
-                </div>
-                <input type="hidden" id="status" name="status" value="activo">
-                <div class="form-group">
-                  <label for="constanciasituacion">Situación fiscal @if($cliente->constanciasituacion!='') <a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar  constancia <img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="constanciasituacion" name="constanciasituacion">
-                      <label class="custom-file-label" for="constanciasituacion">Seleccionar archivo</label>
-                    </div>                   
-                  </div>
+                  <label for="constanciasituacion">Forma de pago</label>
+                  <input type="text" class="form-control" id="fecha_finaliza" name="fecha_finaliza"  value="{{ $servicio->formapago }}" readonly>
                 </div>
               </div>
-            </div>     
-                  
+              <div class="col-md-4">                            
+                <div class="form-group">
+                  <label for="constanciasituacion">Estado de pago</label>
+                  <select class="form-control" id="statuspago" name="statuspago" >
+                    <option value="norecurrente" @if($servicio->statuspago == 'Revision') selected="true" @endif>Revision</option>
+                    <option value="recurrente" @if($servicio->statuspago == 'Pagado') selected="true" @endif>Pagado</option>
+                    <option value="recurrente" @if($servicio->statuspago == 'Cancelado') selected="true" @endif>Cancelado</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>                       
           </div>
           <!-- /.card-body -->
-
-                  
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary" id="btn_guardaregistro">Guardar cambios</button>
+          </div>          
           
       </div>
 
-      <div class="card card-primary">
-        <div class="card-header">
-          <h3 class="card-title">Datos de usuario</h3>
-        </div>
-
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="nombre">usuario</label>
-                  <input type="text" class="form-control" id="usuario" name="usuario" value="{{ $usuario->emailuser }}" required>
-                </div>
-              </div>  
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="email">contraseña</label>
-                  <input type="password" class="form-control" id="password" name="password">
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="email">confirma tu contraseña</label>
-                  <input type="password" class="form-control" id="rpassword" name="rpassword">
-                </div>
-              </div>                 
-            </div>
-          </div>
-          <div class="card-footer">
-            <button type="submit" class="btn btn-primary" id="btn_guardaregistro">Guardar cambios</button>
-          </div>  
-      </div>
-    </form>   
+  </form>   
       <!-- /.card -->
 
 
@@ -129,15 +147,16 @@
 <script>
   (function ($) {
   
-  $("#menuecliente").addClass("nav-item menu-open");
-  $("#menuecliente2").addClass("nav-link active");
-  $("#menuconsultacliente").addClass("important nav-link active"); 
+$("#menucontadoredocta").addClass("nav-item menu-open");
+  $("#menucontadoredocta2").addClass("nav-link active");
+  $("#menucontadoredocta1_1").addClass("important nav-link active"); 
   
-
-//Agregar producto
-  $('#btn_guardaregistro').click(function() {    
+  
+ /* $('#btn_guardaregistro').click(function() {    
+    
     var nombre        = $('#nombre').val();
     var email         = $('#email').val();    
+    var tipo_usuario  = $('#tipo_usuario').val();
     var password      = $('#password').val();
     var rpassword     = $('#rpassword').val();
 
@@ -150,6 +169,10 @@
       document.getElementById("email").focus();      
       return false;
     }
+    if (tipo_usuario == '' || tipo_usuario.length == 0 ) {
+      document.getElementById("tipo_usuario").focus();      
+      return false;
+    }
     if(password !== rpassword){
       alert("la contraseña no coincide");
       return false;
@@ -157,8 +180,28 @@
     if(password=='' && rpassword == ''){
       password = 'ninguno';
     }
-  
-  });
+   /// $('#btn_guardaregistro').attr('disabled', true);
+   // document.formcliente.submit();
+
+  });*/
+
+  $("#modalidad" ).change(function() {  
+      var modalidad       = $('#modalidad').val();
+      if(modalidad=='recurrente'){
+        $('#contrecurrente').show();
+        $('#contrecurrente2').show();
+        $('#contnrecurrente').hide();
+        $('#fecha_finaliza').val('');
+      }else{
+        $('#contnrecurrente').show();
+        $('#contrecurrente').hide();
+        $('#contrecurrente2').hide();
+        $('#fecha_recurrente').val('');
+        $('#fechaf_recurrente').val('');        
+      }
+      
+      //almacen
+    });
 
   $(document).on("click", "#btn-eliminar", function () {
     var id_cliente = $(this).attr('data-id');
