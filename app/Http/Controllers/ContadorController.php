@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Servicio;
+use App\Models\Pagoservicio;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -104,7 +105,7 @@ class ContadorController extends Controller
     public function cuentasClientes(Request $request){
         //$cliente = Cliente::where('id_user',$id_usuario)->first();
         $servicios = DB::table('servicios')
-                        ->select('clientes.nombre as nomcliente','fecha_contrato','descripcion','servicios.precio','fecha_finaliza','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago','servicios.created_at as creacion')
+                        ->select('clientes.nombre as nomcliente','fecha_contrato','descripcion','servicios.precio','fecha_finaliza','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago','servicios.created_at as creacion','pagoservicios.status as statuspago')
                         ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
                         ->leftjoin('clientes','servicios.id_cliente','=','clientes.id')
                         ->get();
@@ -120,6 +121,18 @@ class ContadorController extends Controller
                         ->first();
         $clientes   = Cliente::all();
         return view('contador.edit', compact('servicio','clientes')); 
+    }
+
+    public function cuentaclienteupdate(Request $request, $id_servicio, $statusservicio , $statuspago){
+        $servicio     = Servicio::where('id',$id_servicio)->first();
+        $servicio->status = $statusservicio;
+        $servicio->save();        
+
+        $pagoservicio     = Pagoservicio::where('id_servicio',$id_servicio)->first();
+        $pagoservicio->status = $statuspago;
+        $pagoservicio->save();        
+
+        return response()->json(['data' => "Cambios guardados correctamente..."]);
     }
     
 }

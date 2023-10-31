@@ -1,8 +1,6 @@
 @extends('layouts.app') 
 @section('contenidoprincipal') 
-  <form method="POST" action="{{ route('contador.update', $servicio->ids) }}" accept-charset="UTF-8" enctype="multipart/form-data">
-    @csrf
-    {{ method_field('PUT') }}
+  
      <div class="card card-primary">
         <div class="card-header">
           <h3 class="card-title">Datos de contacto</h3>
@@ -25,7 +23,7 @@
                 <div class="form-group">
                   <label for="nombre">Fecha de creación</label>
                   <input type="text" class="form-control" id="creacion" name="creacion" readonly value="{{ $servicio->creacion }}">
-                  <input type="hidden" class="form-control" id="status" name="status" value="activo" required>
+                  <input type="hidden" class="form-control" id="id_servicio" name="id_servicio" value="{{ $servicio->ids }}" required>
                 </div>
               </div>
               <div class="col-md-12">
@@ -38,7 +36,6 @@
                 <div class="form-group">
                   <label for="nombre">Fecha de contrato</label>
                   <input type="date" class="form-control" id="fecha_contrato" name="fecha_contrato" readonly value="{{ $servicio->fecha_contrato }}">
-                  <input type="hidden" class="form-control" id="status" name="status" value="activo" required>
                 </div>
               </div>                
               <div class="col-md-4">
@@ -83,7 +80,7 @@
 
               <div class="col-md-4">                            
                 <div class="form-group">
-                  <label for="constanciasituacion">Estado del servicio{{ $servicio->statuspago}}</label>
+                  <label for="constanciasituacion">Estado actual del servicio: <b style="color: green;">{{ $servicio->statusservicio}}</b></label>
                   <select class="form-control" id="statusservicio" name="statusservicio" >
                     <option value="Activo" @if($servicio->statusservicio == 'Activo') selected="true" @endif>Activo</option>
                     <option value="Finalizado" @if($servicio->statusservicio == 'Finalizado') selected="true" @endif>Finalizado</option>
@@ -122,9 +119,9 @@
                 <div class="form-group">
                   <label for="constanciasituacion">Estado de pago</label>
                   <select class="form-control" id="statuspago" name="statuspago" >
-                    <option value="norecurrente" @if($servicio->statuspago == 'Revision') selected="true" @endif>Revision</option>
-                    <option value="recurrente" @if($servicio->statuspago == 'Pagado') selected="true" @endif>Pagado</option>
-                    <option value="recurrente" @if($servicio->statuspago == 'Cancelado') selected="true" @endif>Cancelado</option>
+                    <option value="Revision" @if($servicio->statuspago == 'Revision') selected="true" @endif>Revision</option>
+                    <option value="Pagado" @if($servicio->statuspago == 'Pagado') selected="true" @endif>Pagado</option>
+                    <option value="Cancelado" @if($servicio->statuspago == 'Cancelado') selected="true" @endif>Cancelado</option>
                   </select>
                 </div>
               </div>
@@ -133,12 +130,12 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            <button type="submit" class="btn btn-primary" id="btn_guardaregistro">Guardar cambios</button>
+            <button class="btn btn-primary" id="btn_guardaregistro">Guardar cambios</button>
           </div>          
           
       </div>
 
-  </form>   
+  
       <!-- /.card -->
 
 
@@ -152,38 +149,20 @@ $("#menucontadoredocta").addClass("nav-item menu-open");
   $("#menucontadoredocta1_1").addClass("important nav-link active"); 
   
   
- /* $('#btn_guardaregistro').click(function() {    
-    
-    var nombre        = $('#nombre').val();
-    var email         = $('#email').val();    
-    var tipo_usuario  = $('#tipo_usuario').val();
-    var password      = $('#password').val();
-    var rpassword     = $('#rpassword').val();
+  $('#btn_guardaregistro').click(function() {        
+   var id_servicio        = $('#id_servicio').val();
+   var statusservicio     = $('#statusservicio').val();
+   var statuspago         = $('#statuspago').val();
+    $.ajax({
+        type: "get",
+        url: "{{ url('contador/cuentacliente/update') }}"+'/'+id_servicio+'/'+statusservicio+'/'+statuspago,
+        success: function (data) {
+          alert(data.data);
+          location.reload();
+        }
+    });
 
-
-    if (nombre == '' || nombre.length == 0 ) {
-      document.getElementById("nombre").focus();
-      return false;
-    }
-    if (email == '' || email.length == 0 ) {
-      document.getElementById("email").focus();      
-      return false;
-    }
-    if (tipo_usuario == '' || tipo_usuario.length == 0 ) {
-      document.getElementById("tipo_usuario").focus();      
-      return false;
-    }
-    if(password !== rpassword){
-      alert("la contraseña no coincide");
-      return false;
-    }
-    if(password=='' && rpassword == ''){
-      password = 'ninguno';
-    }
-   /// $('#btn_guardaregistro').attr('disabled', true);
-   // document.formcliente.submit();
-
-  });*/
+  });
 
   $("#modalidad" ).change(function() {  
       var modalidad       = $('#modalidad').val();

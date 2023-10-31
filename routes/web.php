@@ -41,6 +41,8 @@ Route::resource('/servicios', ServicioController::class);
 
 Route::resource('/pagoservicios', PagoservicioController::class);
 
+
+Route::get('contador/cuentacliente/update/{id_servicio}/{statusservicio}/{statuspago}', [App\Http\Controllers\ContadorController::class,'cuentaclienteupdate'])->name('cuentaclienteupdate');
 Route::get('contador/cuentaclientes', [App\Http\Controllers\ContadorController::class,'cuentasclientes'])->name('cuentasClientes');
 Route::get('contador/cuentacliente/{id}', [App\Http\Controllers\ContadorController::class,'cuentacliente'])->name('cuentaCliente');
 Route::get('contador/createservicio/{id_cliente}', [App\Http\Controllers\ContadorController::class,'createservicio'])->name('createservicio');

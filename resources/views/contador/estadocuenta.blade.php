@@ -12,14 +12,15 @@
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th scope="col">Fecha de contrato</th>   
+                <th scope="col">Fecha de contrato</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Servicio</th>
-                <th scope="col">Precio</th>                    
-                <th scope="col">Estado</th>                    
+                <th scope="col">Precio</th>
+                <th scope="col">Estado del servicio</th>
                 <th scope="col">Vencimiento</th>
                 <th scope="col">Metodo de pago</th>
-                <th scope="col">Factura</th>                     
+                <th scope="col">Estado del pago</th>
+                <th scope="col">Seguimiento</th>
             </tr>
             </thead>
             <tbody>                
@@ -32,24 +33,25 @@
                   <td style="color: @if($servicio->status == 'En comprobacion')red @endif @if($servicio->status == 'activo') blue @endif ;">{{ $servicio->status }}</td>
                   <td>{{ $servicio->fecha_finaliza }}</td>
                   <td>{{ $servicio->formapago }}</td>
+                  <td>{{ $servicio->statuspago }}</td>
                   <td>
-                    @if($servicio->status == 'En comprobacion') En comprobacion @endif
-                    @if($servicio->status == 'activo') 
-                    <a href="/contador/cuentacliente/{{$servicio->ids}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Ver / cargar factura</button></a> @endif
+                    <a href="/contador/cuentacliente/{{$servicio->ids}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Ver</button> </a>
+                     @if($servicio->statuspago=='Pagado') <a href="#"><button type="button" class="btn btn-warning" id="btnfacturar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Facturar</button></a>@endif
                   </td>                            
                 </tr>                    
               @endforeach                
             </tbody>
             <tfoot>
             <tr>
-                <th scope="col">Fecha de contrato</th>   
+                <th scope="col">Fecha de contrato</th>
                 <th scope="col">Cliente</th>
-                <th scope="col">Servicio</th>                    
-                <th scope="col">Precio</th>                    
-                <th scope="col">Estado</th>                    
+                <th scope="col">Servicio</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Estado del servicio</th>
                 <th scope="col">Vencimiento</th>
-                <th scope="col">Metodo de pago</th>                                  
-                <th scope="col">Factura</th>           
+                <th scope="col">Metodo de pago</th>
+                <th scope="col">Estado del pago</th>
+                <th scope="col">Seguimiento</th>
             </tr>
             </tfoot>
           </table>
