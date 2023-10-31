@@ -9,6 +9,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\PagoservicioController;
 use App\Http\Controllers\ContadorController;
+use App\Http\Controllers\CatservicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::resource('/servicios', ServicioController::class);
 
 Route::resource('/pagoservicios', PagoservicioController::class);
 
+Route::resource('/catservicios', CatservicioController::class);
 
 Route::get('contador/cuentacliente/update/{id_servicio}/{statusservicio}/{statuspago}', [App\Http\Controllers\ContadorController::class,'cuentaclienteupdate'])->name('cuentaclienteupdate');
 Route::get('contador/cuentaclientes', [App\Http\Controllers\ContadorController::class,'cuentasclientes'])->name('cuentasClientes');
