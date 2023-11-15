@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Cliente;
+use App\Models\Catservicio;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -26,9 +27,21 @@ class ServicioController extends Controller
     }
     public function index()
     {        
-        $servicios  = Servicio::all();
-        $clientes   = Cliente::all();
-        //return $usuarios;          
+        if(auth()->user()->tipo_usuario=='cliente'){
+            $servicios  = DB::table('servicios')
+                        ->select('servicios.id','fecha_contrato','servicios.descripcion','servicios.modalidad','servicios.id_cliente','servicios.contrato_doc','servicios.status','servicios.fecha_finaliza','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.precio','servicios.id_usuario','catservicios.descripcion as desc_servicio')
+                        ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
+                        ->leftjoin('clientes','servicios.id_cliente','=','clientes.id')
+                        ->where('clientes.id_user',auth()->user()->id)
+                        ->get();
+            $clientes   = Cliente::all();
+        }else{
+            $servicios  = DB::table('servicios')
+                        ->select('servicios.id','fecha_contrato','servicios.descripcion','servicios.modalidad','servicios.id_cliente','servicios.contrato_doc','servicios.status','servicios.fecha_finaliza','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.precio','servicios.id_usuario','catservicios.descripcion as desc_servicio')
+                        ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
+                        ->get();
+            $clientes   = Cliente::all();
+        } 
         return view('servicios.index', compact('servicios','clientes')); 
     }
 
@@ -42,7 +55,8 @@ class ServicioController extends Controller
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
         $clientes   = Cliente::all();
-        return view('servicios.create', compact('date','clientes')); 
+        $catservicios = Catservicio::all();     
+        return view('servicios.create', compact('date','clientes','catservicios')); 
     }
 
     /**
@@ -92,7 +106,8 @@ class ServicioController extends Controller
     {
         $servicio    = Servicio::findOrFail($id);
         $clientes   = Cliente::all();
-        return view('servicios.edit', compact('servicio','clientes')); 
+        $catservicios = Catservicio::all();   
+        return view('servicios.edit', compact('servicio','clientes','catservicios')); 
     }
 
     /**
@@ -144,7 +159,8 @@ class ServicioController extends Controller
         $cliente = Cliente::where('id_user',$id_usuario)->first();
 
         $servicios = DB::table('servicios')
-                        ->select('fecha_contrato','descripcion','servicios.precio','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago')
+                        ->select('fecha_contrato','catservicios.descripcion','servicios.precio','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago')
+                        ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
                         ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
                         ->where('servicios.id_cliente',$cliente->id)
                         ->get();

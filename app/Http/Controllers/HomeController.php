@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Servicio;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +31,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+       // return view('home');
+         if(auth()->user()->tipo_usuario=='cliente'){
+            $servicios  = DB::table('servicios')
+                        ->select('servicios.id','fecha_contrato','servicios.descripcion','servicios.modalidad','servicios.id_cliente','servicios.contrato_doc','servicios.status','servicios.fecha_finaliza','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.precio','servicios.id_usuario','catservicios.descripcion as desc_servicio')
+                        ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
+                        ->leftjoin('clientes','servicios.id_cliente','=','clientes.id')
+                        ->where('clientes.id_user',auth()->user()->id)
+                        ->get();
+        }else{
+            $servicios  = DB::table('servicios')
+                        ->select('servicios.id','fecha_contrato','servicios.descripcion','servicios.modalidad','servicios.id_cliente','servicios.contrato_doc','servicios.status','servicios.fecha_finaliza','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.precio','servicios.id_usuario','catservicios.descripcion as desc_servicio')
+                        ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
+                        ->get();
+        } 
+        $clientes   = Cliente::all();
+        //return $usuarios;          
+        return view('home', compact('servicios','clientes')); 
     }
 }

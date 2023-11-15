@@ -14,6 +14,7 @@ use App\Models\Servicio;
 use App\Models\Pagoservicio;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Catservicio;
 
 class ContadorController extends Controller
 {
@@ -100,12 +101,14 @@ class ContadorController extends Controller
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
         $cliente   = Cliente::findOrFail($id_cliente);
-        return view('contador.createservicio', compact('date','cliente')); 
+        $catservicios = Catservicio::all(); 
+        return view('contador.createservicio', compact('date','cliente','catservicios')); 
     }
     public function cuentasClientes(Request $request){
         //$cliente = Cliente::where('id_user',$id_usuario)->first();
         $servicios = DB::table('servicios')
-                        ->select('clientes.nombre as nomcliente','fecha_contrato','descripcion','servicios.precio','fecha_finaliza','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago','servicios.created_at as creacion','pagoservicios.status as statuspago')
+                        ->select('clientes.nombre as nomcliente','fecha_contrato','catservicios.descripcion','servicios.precio','fecha_finaliza','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago','servicios.created_at as creacion','pagoservicios.status as statuspago')
+                        ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
                         ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
                         ->leftjoin('clientes','servicios.id_cliente','=','clientes.id')
                         ->get();
@@ -114,7 +117,8 @@ class ContadorController extends Controller
     }
     public function cuentaCliente(Request $request, $id){
         $servicio    = DB::table('servicios')
-                        ->select('clientes.nombre as nomcliente','servicios.id_cliente','fecha_contrato','descripcion','servicios.precio','fecha_finaliza','servicios.status as statusservicio','servicios.id as ids','servicios.modalidad','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.contrato_doc','pagoservicios.formapago','pagoservicios.fechapago','pagoservicios.status as statuspago','servicios.created_at as creacion','servicios.created_at as creacion')
+                        ->select('clientes.nombre as nomcliente','servicios.id_cliente','fecha_contrato','catservicios.descripcion','servicios.precio','fecha_finaliza','servicios.status as statusservicio','servicios.id as ids','servicios.modalidad','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.contrato_doc','pagoservicios.formapago','pagoservicios.fechapago','pagoservicios.status as statuspago','servicios.created_at as creacion','servicios.created_at as creacion')
+                        ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
                         ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
                         ->leftjoin('clientes','servicios.id_cliente','=','clientes.id')
                         ->where('servicios.id',$id)

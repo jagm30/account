@@ -22,7 +22,12 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="email">Descripcion</label>
-                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese la descripción del servicio" required>
+                  <select class="form-control" id="descripcion" name="descripcion" required="">
+                    <option value="">Selecciona un servicio</option>
+                    @foreach($catservicios as $servicio)
+                      <option value="{{ $servicio->id }}">{{ $servicio->descripcion }}</option>
+                    @endforeach
+                  </select>
                 </div>
               </div>  
               <div class="col-md-6">

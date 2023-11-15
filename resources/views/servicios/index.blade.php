@@ -25,7 +25,7 @@
               @foreach ($servicios as $servicio)                        
                 <tr>                            
                   <td>{{ $servicio->fecha_contrato }}</td>                            
-                  <td>{{ $servicio->descripcion }}</td>
+                  <td>{{ $servicio->desc_servicio }}</td>
                   <td><a href="{{Storage::url($servicio->contrato_doc) }}" target="_blank">Descargar</a></td>
                   <td style=" color: @if($servicio->status=='activo') blue @endif @if($servicio->status=='En comprobacion') red @endif ; " > {{ $servicio->status }} </td>
                   <td>{{ $servicio->modalidad}}</td>

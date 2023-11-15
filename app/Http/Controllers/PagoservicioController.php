@@ -53,7 +53,12 @@ class PagoservicioController extends Controller
             $pagoservicio->status = "Revision";
             $pagoservicio->save();
         }
-        return redirect()->route('clientes.index');
+        if(auth()->user()->tipo_usuario=='cliente'){
+            return redirect('/servicios/estadoCuenta/'.auth()->user()->id);
+        }else{
+            return redirect()->route('contador.index');        
+        }  
+        
     }
 
     /**

@@ -81,7 +81,13 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library  menu-is-opening menu-open-->
-        <li class="nav-item" id="menucatserv">
+        
+        @guest
+        @else
+        @if(Auth::user()->tipo_usuario == 'admin' or Auth::user()->tipo_usuario == 'superadmin')
+        
+    
+          <li class="nav-item" id="menucatserv">
             <a href="/catservicios" class="nav-link" id="menucatserv2">
               <i class="nav-icon fas fa-user"></i>
               <p>
@@ -91,12 +97,6 @@
             </a>
             
           </li>
-        @guest
-        @else
-        @if(Auth::user()->tipo_usuario == 'admin' or Auth::user()->tipo_usuario == 'superadmin')
-        
-    
-
           <li class="nav-item" id="menuusuario">
             <a href="#" class="nav-link" id="menuusuario2">
               <i class="nav-icon fas fa-user"></i>
@@ -170,7 +170,16 @@
         @endif
         @if(Auth::user()->tipo_usuario == 'contador' )
 
-
+          <li class="nav-item" id="menucatserv">
+            <a href="/catservicios" class="nav-link" id="menucatserv2">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Cat de servicios
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            
+          </li>
           <li class="nav-item" id="menucontador">
             <a href="#" class="nav-link" id="menucontadorcliente">
               <i class="nav-icon fas fa-user-alt"></i>
