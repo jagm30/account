@@ -159,7 +159,7 @@ class ServicioController extends Controller
         $cliente = Cliente::where('id_user',$id_usuario)->first();
 
         $servicios = DB::table('servicios')
-                        ->select('fecha_contrato','catservicios.descripcion','servicios.precio','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago')
+                        ->select('fecha_contrato','catservicios.descripcion','servicios.precio','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago','pagoservicios.status as statuspago')
                         ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
                         ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
                         ->where('servicios.id_cliente',$cliente->id)

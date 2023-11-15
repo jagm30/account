@@ -18,7 +18,8 @@
                 <th scope="col">Estado</th>                    
                 <th scope="col">Fecha de pago</th>
                 <th scope="col">Metodo de pago</th>
-                <th scope="col">Acción</th>                     
+                <th scope="col">Status pago</th>
+                
             </tr>
             </thead>
             <tbody>                
@@ -27,14 +28,15 @@
                   <td>{{ $servicio->fecha_contrato }}</td>                            
                   <td>{{ $servicio->descripcion }}</td>
                   <td>{{ $servicio->precio }}</td>
-                  <td style="color: @if($servicio->status == 'En comprobacion')red @endif @if($servicio->status == 'activo') blue @endif ;">{{ $servicio->status }}</td>
+                  <td >{{ $servicio->status }}</td>
                   <td>{{ $servicio->fechapago }}</td>
-                  <td>{{ $servicio->formapago }}</td>
+                  <td>{{ $servicio->formapago }}</td>                           
                   <td>
-                    @if($servicio->status == 'En comprobacion') En comprobacion @endif
-                    @if($servicio->status == 'activo') 
-                    <a href="/pagoservicios/{{$servicio->ids}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a> @endif
-                  </td>                            
+                    @if($servicio->statuspago == 'Pagado' ) {{ $servicio->statuspago }} @endif
+                    @if($servicio->statuspago != 'Pagado') 
+                    <p style="color: red;">{{ $servicio->statuspago }}</p>
+                    <a href="/pagoservicios/{{$servicio->ids}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a>  @endif
+                  </td>
                 </tr>                    
               @endforeach                
             </tbody>
@@ -45,8 +47,8 @@
                 <th scope="col">Precio</th>                    
                 <th scope="col">Estado</th>                    
                 <th scope="col">Fecha de pago</th>
-                <th scope="col">Metodo de pago</th>                                  
-                <th scope="col">Acción</th>           
+                <th scope="col">Metodo de pago</th>
+                <th scope="col">Status pago</th>                                     
             </tr>
             </tfoot>
           </table>
