@@ -5,7 +5,7 @@
     <div class="col-12">            
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Servicios registrados</h3>
+          <h3 class="card-title">Catalogo de servicios</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -50,9 +50,9 @@
 @section("scriptpie")
 <script>
 (function ($) {
-  $("#menucatserv1").addClass("nav-item menu-open");
-  $("#menucatserv2").addClass("nav-link active");
-  $("#menucatserv3").addClass("important nav-link active"); 
+  $("#menucatserv").addClass("nav-item menu-open");
+  $("#menucatserv1").addClass("nav-link active");
+  $("#menucatserv2").addClass("important nav-link active"); 
   
 })(jQuery);
 </script>

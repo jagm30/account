@@ -19,6 +19,7 @@
                 <th scope="col">Fecha de pago</th>
                 <th scope="col">Metodo de pago</th>
                 <th scope="col">Status pago</th>
+                <th scope="col">Accion</th>
                 
             </tr>
             </thead>
@@ -37,6 +38,9 @@
                     <p style="color: red;">{{ $servicio->statuspago }}</p>
                     <a href="/pagoservicios/{{$servicio->ids}}"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Pagar</button></a>  @endif
                   </td>
+                  <td>@if(Auth::user()->tipo_usuario=="cliente" && $servicio->statuspago =='Pagado')                           
+                    <a href="#"><button type="button" class="btn btn-warning" id="btnfacturar"  data-id="{{$servicio->ids}}" data-toggle="modal" data-target="#modal-default">Facturar</button></a>
+                    @endif</td>
                 </tr>                    
               @endforeach                
             </tbody>
@@ -48,7 +52,8 @@
                 <th scope="col">Estado</th>                    
                 <th scope="col">Fecha de pago</th>
                 <th scope="col">Metodo de pago</th>
-                <th scope="col">Status pago</th>                                     
+                <th scope="col">Status pago</th>
+                <th scope="col">Accion</th>                                     
             </tr>
             </tfoot>
           </table>

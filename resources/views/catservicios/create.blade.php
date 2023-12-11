@@ -37,8 +37,8 @@
 @section("scriptpie")
 <script>
 (function ($) {
-  $("#menucatserv1").addClass("nav-item menu-open");
-  $("#menucatserv2").addClass("nav-link active");
+  $("#menucatserv").addClass("nav-item menu-open");
+  $("#menucatserv1").addClass("nav-link active");
   $("#menucatserv3").addClass("important nav-link active"); 
   
 })(jQuery);

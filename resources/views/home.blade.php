@@ -38,7 +38,9 @@
                     @if(Auth::user()->tipo_usuario=="contador")                           
                     <a href="/servicios/{{$servicio->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Editar</button></a>
                     @endif
-
+                    @if(Auth::user()->tipo_usuario=="cliente" && $servicio->statuspago =='Pagado')                           
+                    <a href="#"><button type="button" class="btn btn-warning" id="btnfacturar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Facturar</button></a>
+                    @endif
                   </td>                            
                 </tr>                    
               @endforeach                

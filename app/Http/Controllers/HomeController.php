@@ -34,18 +34,21 @@ class HomeController extends Controller
        // return view('home');
          if(auth()->user()->tipo_usuario=='cliente'){
             $servicios  = DB::table('servicios')
-                        ->select('servicios.id','fecha_contrato','servicios.descripcion','servicios.modalidad','servicios.id_cliente','servicios.contrato_doc','servicios.status','servicios.fecha_finaliza','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.precio','servicios.id_usuario','catservicios.descripcion as desc_servicio')
+                        ->select('servicios.id','fecha_contrato','servicios.descripcion','servicios.modalidad','servicios.id_cliente','servicios.contrato_doc','servicios.status','servicios.fecha_finaliza','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.precio','servicios.id_usuario','catservicios.descripcion as desc_servicio','pagoservicios.status as statuspago')
                         ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
                         ->leftjoin('clientes','servicios.id_cliente','=','clientes.id')
+                        ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
                         ->where('clientes.id_user',auth()->user()->id)
                         ->get();
+            $clientes   = Cliente::all();
         }else{
             $servicios  = DB::table('servicios')
-                        ->select('servicios.id','fecha_contrato','servicios.descripcion','servicios.modalidad','servicios.id_cliente','servicios.contrato_doc','servicios.status','servicios.fecha_finaliza','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.precio','servicios.id_usuario','catservicios.descripcion as desc_servicio')
+                        ->select('servicios.id','fecha_contrato','servicios.descripcion','servicios.modalidad','servicios.id_cliente','servicios.contrato_doc','servicios.status','servicios.fecha_finaliza','servicios.fecha_recurrente','servicios.fechaf_recurrente','servicios.precio','servicios.id_usuario','catservicios.descripcion as desc_servicio','pagoservicios.status as statuspago')
                         ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
+                        ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
                         ->get();
+            $clientes   = Cliente::all();
         } 
-        $clientes   = Cliente::all();
         //return $usuarios;          
         return view('home', compact('servicios','clientes')); 
     }
