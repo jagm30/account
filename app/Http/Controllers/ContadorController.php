@@ -107,7 +107,7 @@ class ContadorController extends Controller
     public function cuentasClientes(Request $request){
         //$cliente = Cliente::where('id_user',$id_usuario)->first();
         $servicios = DB::table('servicios')
-                        ->select('clientes.nombre as nomcliente','fecha_contrato','catservicios.descripcion','servicios.precio','fecha_finaliza','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago','servicios.created_at as creacion','pagoservicios.status as statuspago')
+                        ->select('clientes.nombre as nomcliente','fecha_contrato','catservicios.descripcion','servicios.precio','servicios.fecha_recurrente','servicios.fechaf_recurrente','fecha_finaliza','servicios.status','servicios.id as ids','pagoservicios.formapago','pagoservicios.fechapago','servicios.created_at as creacion','pagoservicios.status as statuspago')
                         ->leftjoin('catservicios','servicios.descripcion','=','catservicios.id')
                         ->leftjoin('pagoservicios','servicios.id','=','pagoservicios.id_servicio')
                         ->leftjoin('clientes','servicios.id_cliente','=','clientes.id')

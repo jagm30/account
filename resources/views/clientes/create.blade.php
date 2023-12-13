@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                   <label for="nombre">RFC</label>
-                  <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Ingrese su RFC" required>
+                  <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Ingrese su RFC" onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                 </div>
                 <div class="form-group">
                   <label for="email">Correo electronico</label>
@@ -176,42 +176,6 @@
     document.formcliente.submit();
 
   });
-//Agregar producto
- /* $('#btn_guardaregistro').click(function() {    
-    
-    var nombre      = $('#nombre').val();
-    var email       = $('#email').val();    
-    var telefono    = $('#telefono').val();
-    var razonsocial = $('#razonsocial').val();
-    var rfc         = $('#rfc').val();
-    var domicilio   = $('#domicilio').val();    
-    var codigopostal= $('#codigopostal').val();
-    var emailfactura= $('#emailfactura').val();
-    var status      = 'activo';
-
-      $.ajax({
-          url: "/clientes",
-          type: "POST",
-          data: {
-              _token: $("#csrf").val(),
-              type: 1,
-              nombre:     nombre,
-              email:      email,
-              telefono:   telefono,
-              razonsocial:razonsocial,
-              rfc:        rfc,
-              domicilio:  domicilio,
-              codigopostal:codigopostal,
-              emailfactura:emailfactura,
-              status:     status
-          },
-          cache: false,
-          success: function(dataResult){
-            alert(dataResult);                
-            //location.reload();          
-          }
-      });    
-  });*/
 
   $(document).on("click", "#btn-eliminar", function () {
     var id_cliente = $(this).attr('data-id');
@@ -226,6 +190,10 @@
         });
     }
   });
+
+  function mayus(e) {
+    e.value = e.value.toUpperCase();
+  }
 })(jQuery);
 </script>
 @endsection

@@ -17,7 +17,9 @@
                 <th scope="col">Contrato</th>                    
                 <th scope="col">Estado</th>                    
                 <th scope="col">Servicio</th>
-                <th scope="col">Fecha de finalización</th>                                    
+                <th scope="col">Fecha de finalización</th>
+                <th scope="col">Inicio recurrente</th>
+                <th scope="col">Fin recurrente</th>
                 <th scope="col">Acción</th>                     
             </tr>
             </thead>
@@ -30,6 +32,8 @@
                   <td style=" color: @if($servicio->status=='activo') blue @endif @if($servicio->status=='En comprobacion') red @endif ; " > {{ $servicio->status }} </td>
                   <td>{{ $servicio->modalidad}}</td>
                   <td>{{ $servicio->fecha_finaliza}}</td>
+                  <td>{{ $servicio->fecha_recurrente}}</td>
+                  <td>{{ $servicio->fechaf_recurrente}}</td>
                   <td>     
                     @if(Auth::user()->tipo_usuario=="superadmin" or Auth::user()->tipo_usuario=="admin")                           
                     <a href="/servicios/{{$servicio->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Editar</button></a>
@@ -50,11 +54,13 @@
             <tfoot>
             <tr>
                 <th scope="col">Fecha de contrato</th>   
-                <th scope="col">Servicio</th>
-                <th scope="col">Fecha de finalización</th>                    
+                <th scope="col">Servicio</th>                    
                 <th scope="col">Contrato</th>                    
                 <th scope="col">Estado</th>                    
-                <th scope="col">Servicio</th>                                    
+                <th scope="col">Servicio</th>
+                <th scope="col">Fecha de finalización</th>
+                <th scope="col">Inicio recurrente</th>
+                <th scope="col">Fin recurrente</th>
                 <th scope="col">Acción</th>           
             </tr>
             </tfoot>

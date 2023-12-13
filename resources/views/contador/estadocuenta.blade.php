@@ -18,9 +18,11 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Estado del servicio</th>
                 <th scope="col">Vencimiento</th>
+                <th scope="col">Inicio recuerrente</th>
+                <th scope="col">Fin recurrente</th>
                 <th scope="col">Metodo de pago</th>
                 <th scope="col">Estado del pago</th>
-                <th scope="col">Seguimiento</th>
+                <th scope="col" style="width: 120px;">Seguimiento</th>
             </tr>
             </thead>
             <tbody>                
@@ -32,6 +34,8 @@
                   <td>$ {{ number_format($servicio->precio,2) }}</td>
                   <td style="color: @if($servicio->status == 'En comprobacion')red @endif @if($servicio->status == 'activo') blue @endif ;">{{ $servicio->status }}</td>
                   <td>{{ $servicio->fecha_finaliza }}</td>
+                  <td>{{ $servicio->fecha_recurrente}}</td>
+                  <td>{{ $servicio->fechaf_recurrente }}</td>
                   <td>{{ $servicio->formapago }}</td>
                   <td>{{ $servicio->statuspago }}</td>
                   <td>
@@ -49,6 +53,8 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Estado del servicio</th>
                 <th scope="col">Vencimiento</th>
+                <th scope="col">Inicio recuerrente</th>
+                <th scope="col">Fin recurrente</th>
                 <th scope="col">Metodo de pago</th>
                 <th scope="col">Estado del pago</th>
                 <th scope="col">Seguimiento</th>
