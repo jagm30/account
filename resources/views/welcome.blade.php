@@ -3,102 +3,213 @@
 @else
 <script>window.location = "/clientes";</script>
 @endguest
-<!DOCTYPE html>
-<html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Facturacion Inicio</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FACTURACION</title>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="../../index2.html"><b>ACCOUNT</b>DC</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Ingresa tus datos para iniciar sesión</p>
-
-    <form method="POST" action="{{ route('login') }}">
-    @csrf
-      <div class="form-group has-feedback">
-        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
-            @error('email')
-                <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="password">
-            @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-           
+<div class="container">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card py-3 px-2">
+        <p class="text-center mb-3 mt-2">ACCOUNT DC</p>
+        <!--<div class="row mx-auto ">
+          <div class="col-4">
+            <i class="fab fa-twitter"></i>
+          </div>
+          <div class="col-4">
+            <i class="fab fa-facebook"></i>
+          </div>
+          <div class="col-4">
+            <i class="fab fa-google"></i>
           </div>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">{{ __('Acceder') }}</button>
+      -->
+        <div class="division">
+          <div class="row">
+            <div class="col-3"><div class="line l"></div></div>
+            <div class="col-6"><span>Login</span></div>
+            <div class="col-3"><div class="line r"></div></div>
+          </div>
         </div>
-        <!-- /.col -->
+        <form method="POST" action="{{ route('login') }}">
+        @csrf
+          <div class="form-group">              
+              <div class="form-group has-feedback">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              </div>
+
+
+          </div>
+          <div class="form-group">
+              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="password">
+              @error('password')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <!--  <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Rester connecte</label>
+                </div>
+              </div>
+              <div class="col-md-6 col-12 bn">Mot se passe oublie</div>
+            </div>
+          -->
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>{{ __('Acceder') }}</small></button>
+            </div>
+        </form>
       </div>
-    </form>
-
-
-    <!-- /.social-auth-links -->
-
-   
-
+    </div>
   </div>
-  <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
 
-<!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
-</script>
-</body>
-</html>
+<style type="text/css">
+  body{
+  background-color: #19123B;
+}
+.card{
+  border: none;
+  border-top: 5px solid  rgb(176,106,252);
+  background: #212042;
+  color: #57557A;
+}
+p{
+  font-weight: 600;
+  font-size: 15px;
+}
+.fab{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: #2A284D;
+  height: 40px;
+  width: 90px;
+}
+.fab:hover{
+  cursor: pointer;
+}
+.fa-twitter{
+  color: #56ABEC;
+}
+.fa-facebook{
+  color: #1775F1;
+}
+.fa-google{
+  color: #CB5048;
+}
+.division{
+  float: none;
+  position: relative;
+  margin: 30px auto 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.division .line{
+  border-top: 1.5px solid #57557A;;
+  position: absolute;
+  top: 13px;
+  width: 85%;
+}
+.line.l{
+  left: 52px;
+}
+.line.r{
+  right: 45px;
+
+}
+.division span{
+  font-weight: 600;
+  font-size: 14px;
+}
+.myform{
+  padding: 0 25px 0 33px;
+}
+.form-control{
+  border: 1px solid #57557A;
+  border-radius: 3px;
+  background: #212042;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  
+}
+.form-control:focus{
+  border: 1px solid #57557A;
+  border-radius: 3px;
+  box-shadow: none;
+  background: #212042;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.bn{
+  text-decoration: underline;
+}
+.bn:hover{
+  cursor: pointer;
+}
+.form-check-input {
+    margin-top: 8px!important;
+    }
+.btn-primary{
+background: linear-gradient(135deg, rgba(176,106,252,1) 39%,rgba(116,17,255,1) 101%);
+border: none;
+border-radius: 50px;
+}
+.btn-primary:focus{
+  box-shadow: none;
+  border: none;
+}
+small{
+  color: #F2CEFF;
+}
+.far.fa-user{
+  font-size: 13px;
+}
+
+@media(min-width: 767px){
+  .bn{
+    text-align: right;
+  }
+}
+@media(max-width: 767px){
+  .form-check{
+    text-align: center;
+  }
+  .bn{
+    text-align: center;
+    align-items: center;
+  }
+}
+@media(max-width: 450px){
+  .fab{
+    width: 100%;
+    height: 100%;
+  }
+  .division .line{
+    width: 50%;
+  }
+}
+</style>
