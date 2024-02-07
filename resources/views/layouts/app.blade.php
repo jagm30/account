@@ -94,9 +94,9 @@
     
           <li class="nav-item" id="menucatserv">
             <a href="#" class="nav-link" id="menucatserv1">
-              <i class="nav-icon fas fa-user-alt"></i>
+              <i class="nav-icon fas fa-bars"></i>
               <p>
-                Catalogo de servicios
+                CATÁLOGO
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -115,56 +115,9 @@
               </li>                                     
             </ul>
           </li>
-          <li class="nav-item" id="menuusuario">
-            <a href="#" class="nav-link" id="menuusuario2">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                USUARIOS
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/usuarios" class="nav-link" id="menuconsultausuario">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta Usuarios</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/usuarios/create" class="nav-link" id="menuregistrausuario">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Registrar usuario</p>
-                </a>
-              </li>                        
-            </ul>
-          </li>
-
-          <li class="nav-item" id="menuecliente">
-            <a href="#" class="nav-link" id="menuecliente2">
-              <i class="nav-icon fas fa-user-alt"></i>
-              <p>
-                CLIENTES
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/clientes" class="nav-link" id="menuconsultacliente">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consultar clientes</p>
-                </a>
-              </li> 
-              <li class="nav-item">
-                <a href="/clientes/create" class="nav-link" id="menuregistracliente">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p> Registrar cliente</p>
-                </a>
-              </li>                                     
-            </ul>
-          </li>
           <li class="nav-item" id="menuservicio">
             <a href="#" class="nav-link" id="menuservicio2">
-              <i class="nav-icon fas fa-user-alt"></i>
+              <i class="nav-icon fas fa-cog"></i>
               <p>
                 SERVICIOS
                 <i class="right fas fa-angle-left"></i>
@@ -174,24 +127,71 @@
               <li class="nav-item">
                 <a href="/servicios" class="nav-link" id="menuconsultaservicio">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Consultar servicios</p>
+                  <p>Consultar</p>
                 </a>
               </li> 
               <li class="nav-item">
                 <a href="/servicios/create" class="nav-link" id="menuregistraservicio">
                   <i class="far fa-circle nav-icon"></i>
-                  <p> Registrar servicio</p>
+                  <p> Registrar</p>
                 </a>
               </li>                                     
             </ul>
-          </li>         
+          </li>
+          <li class="nav-item" id="menuecliente">
+            <a href="#" class="nav-link" id="menuecliente2">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                CLIENTES
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/clientes" class="nav-link" id="menuconsultacliente">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Consultar</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a href="/clientes/create" class="nav-link" id="menuregistracliente">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Registrar</p>
+                </a>
+              </li>                                     
+            </ul>
+          </li>
+          <li class="nav-item" id="menuusuario">
+            <a href="#" class="nav-link" id="menuusuario2">
+              <i class="nav-icon fas fa-id-card"></i>
+              <p>
+                USUARIOS
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/usuarios" class="nav-link" id="menuconsultausuario">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Consultar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/usuarios/create" class="nav-link" id="menuregistrausuario">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar</p>
+                </a>
+              </li>                        
+            </ul>
+          </li>
+                          
         @endif
         @if(Auth::user()->tipo_usuario == 'contador' )
           <li class="nav-item" id="menucatserv">
             <a href="#" class="nav-link" id="menucatserv1">
-              <i class="nav-icon fas fa-user-alt"></i>
+              <i class="nav-icon fas fa-bars"></i>
               <p>
-                Catalogo de servicios
+                CATÁLOGO
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -205,40 +205,16 @@
               <li class="nav-item">
                 <a href="/catservicios/create" class="nav-link" id="menucatserv3">
                   <i class="far fa-circle nav-icon"></i>
-                  <p> Registrar</p>
-                </a>
-              </li>                                     
-            </ul>
-          </li>
-
-          <li class="nav-item" id="menucontador">
-            <a href="#" class="nav-link" id="menucontadorcliente">
-              <i class="nav-icon fas fa-user-alt"></i>
-              <p>
-                Clientes
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/contador" class="nav-link" id="menucontadorcliente1">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consultar clientes</p>
-                </a>
-              </li> 
-              <li class="nav-item">
-                <a href="/clientes/create" class="nav-link" id="menucontadorcliente2">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p> Registrar cliente</p>
+                  <p>Registrar</p>
                 </a>
               </li>                                     
             </ul>
           </li>
           <li class="nav-item" id="menucontadorservicio">
             <a href="#" class="nav-link" id="menucontadorservicio1">
-              <i class="nav-icon fas fa-user-alt"></i>
+              <i class="nav-icon fas fa-cog"></i>
               <p>
-                Servicios
+                SERVICIOS
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -246,16 +222,39 @@
               <li class="nav-item">
                 <a href="/servicios" class="nav-link" id="menucontadorservicio1_1">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Consultar servicios</p>
+                  <p>Consultar</p>
                 </a>
               </li>                                    
             </ul>
           </li>
+          <li class="nav-item" id="menucontador">
+            <a href="#" class="nav-link" id="menucontadorcliente">
+              <i class="nav-icon fas fa-id-card"></i>
+              <p>
+                CLIENTES
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/contador" class="nav-link" id="menucontadorcliente1">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Consultar</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a href="/clientes/create" class="nav-link" id="menucontadorcliente2">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Registrar</p>
+                </a>
+              </li>                                     
+            </ul>
+          </li>          
           <li class="nav-item" id="menucontadoredocta">
             <a href="#" class="nav-link" id="menucontadoredocta1">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
-                Estados de cuenta
+                ESTADO DE CUENTA
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -301,9 +300,9 @@
           @endguest
           <li class="nav-item">
             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fa fa-sign"></i>
               <p>
-                Cerrar sesion
+                CERRAR
               </p>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
