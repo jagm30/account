@@ -13,7 +13,13 @@
   <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
+
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
 </head>
 <body class="hold-transition sidebar-mini">
 <style type="text/css">
@@ -300,7 +306,7 @@
           @endguest
           <li class="nav-item">
             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link">
-              <i class="nav-icon fa fa-sign"></i>
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 CERRAR
               </p>
@@ -372,7 +378,31 @@
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": [{
+                  extend:    'copyHtml5',
+                  text:      '<i class="fa fa-files-o"></i>',
+                  titleAttr: 'Copy'
+                }, 
+                {
+                  extend:    'excelHtml5',
+                  text:      '<i class="fa fa-file-excel"></i>',
+                  titleAttr: 'Excel'
+                }, 
+                {
+                  extend:    'pdfHtml5',
+                  text:      '<i class="fa fa-file-pdf"></i>',
+                  titleAttr: 'PDF'
+                }, 
+                {
+                  extend:    'print',
+                  text:      '<i class="fa fa-print"></i>',
+                  titleAttr: 'PDF'
+                },
+                {
+                  extend:    'colvis',
+                  text:      '<i class="fa fa-bars"></i>',
+                  titleAttr: 'mostrar / ocultar'
+                }]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,

@@ -38,17 +38,7 @@
                 </tr>                    
               @endforeach                
             </tbody>
-            <tfoot>
-            <tr>
-              <th scope="col">Id</th>                    
-                <th scope="col">Nombre</th>                    
-                <th scope="col">Email</th>                    
-                <th scope="col">Tipo de usuario</th>                                    
-                <th scope="col">Acción</th>                    
-                <th scope="col"></th>                         
-           
-            </tr>
-            </tfoot>
+            
           </table>
         </div>
         <!-- /.card-body -->

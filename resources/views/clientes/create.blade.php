@@ -19,7 +19,7 @@
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="email">Correo electronico</label>
+                  <label for="email">Correo electrónico</label>
                   <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su email" required>
                 </div>
               </div>  
@@ -54,7 +54,7 @@
                   <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Ingrese su RFC" onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                 </div>
                 <div class="form-group">
-                  <label for="email">Correo electronico</label>
+                  <label for="email">Correo electrónico</label>
                   <input type="email" class="form-control" id="emailfactura" name="emailfactura" placeholder="Ingrese su email" required>
                 </div>
               </div>
@@ -64,12 +64,12 @@
                   <input type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Ingrese el domicilio fiscal" required>
                 </div>
                 <div class="form-group">
-                  <label for="telefono">Codigo postal</label>
+                  <label for="telefono">Código postal</label>
                   <input type="text" class="form-control" id="codigopostal" name="codigopostal" placeholder="Ingrese el codigo postal" required>
                 </div>
                 <input type="hidden" id="status" name="status" value="activo">
                 <div class="form-group">
-                  <label for="constanciasituacion">Situación fiscal</label>
+                  <label for="constanciasituacion">Constancia fiscal</label>
                   <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="constanciasituacion" name="constanciasituacion">

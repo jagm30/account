@@ -13,7 +13,7 @@
             <thead>
             <tr>
               <th>Id</th>                    
-              <th>Descripción</th>   
+              <th>Servicios</th>   
              <th>Acción</th>                            
             </tr>
             </thead>
@@ -28,14 +28,6 @@
                 </tr>                    
               @endforeach                
             </tbody>
-            <tfoot>
-            <tr>
-              <th>Id</th>                    
-              <th>Descripción</th>   
-              <th>Acción</th>                    
-           
-            </tr>
-            </tfoot>
           </table>
         </div>
         <!-- /.card-body -->

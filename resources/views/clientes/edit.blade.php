@@ -21,7 +21,7 @@
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="email">Correo electronico</label>
+                  <label for="email">Correo electrónico</label>
                   <input type="email" class="form-control" id="email" name="email" value="{{ $cliente->email }}" required>
                 </div>
               </div>  
@@ -56,7 +56,7 @@
                   <input type="text" class="form-control" id="rfc" name="rfc" value="{{ $cliente->rfc }}" required>
                 </div>
                 <div class="form-group">
-                  <label for="email">Correo electronico</label>
+                  <label for="email">Correo electrónico</label>
                   <input type="email" class="form-control" id="emailfactura" name="emailfactura" value="{{ $cliente->emailfactura }}" required>
                 </div>
               </div>
@@ -66,12 +66,12 @@
                   <input type="text" class="form-control" id="domicilio" name="domicilio" value="{{ $cliente->domicilio }}" required>
                 </div>
                 <div class="form-group">
-                  <label for="telefono">Codigo postal</label>
+                  <label for="telefono">Código postal</label>
                   <input type="text" class="form-control" id="codigopostal" name="codigopostal" value="{{ $cliente->codigopostal }}" required>
                 </div>
                 <input type="hidden" id="status" name="status" value="activo">
                 <div class="form-group">
-                  <label for="constanciasituacion">Situación fiscal @if($cliente->constanciasituacion!='') <a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar  constancia <img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</label>
+                  <label for="constanciasituacion">Constancia fiscal @if($cliente->constanciasituacion!='') <a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar  constancia <img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</label>
                   <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="constanciasituacion" name="constanciasituacion">

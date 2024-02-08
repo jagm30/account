@@ -14,7 +14,7 @@
             <tr>
               <th scope="col">Nombre</th>                    
                 <th scope="col">Email</th>                    
-                <th scope="col">Telefono</th>                    
+                <th scope="col">Teléfono</th>                    
                 <th scope="col">RFC</th>
                 <th scope="col">Constancia</th>                                    
                 <th scope="col">Accion</th>                    
@@ -49,18 +49,7 @@
                 </tr>                    
               @endforeach                
             </tbody>
-            <tfoot>
-            <tr>
-              <th scope="col">Nombre</th>                    
-                <th scope="col">Email</th>                    
-                <th scope="col">Telefono</th>                    
-                <th scope="col">RFC</th>
-                <th scope="col">Constancia</th>                                    
-                <th scope="col">Accion</th>                    
-                <th scope="col"></th>                        
            
-            </tr>
-            </tfoot>
           </table>
         </div>
         <!-- /.card-body -->

@@ -19,7 +19,7 @@
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="email">Correo electronico</label>
+                  <label for="email">Correo electrónico</label>
                   <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su email" required>
                 </div>
               </div>  
