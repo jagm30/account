@@ -12,11 +12,11 @@
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th scope="col">Fecha de contrato</th>   
+                <th scope="col">Fecha de inicio</th>   
                 <th scope="col">Servicio</th>                    
                 <th scope="col">Contrato</th>                    
                 <th scope="col">Estado</th>                    
-                <th scope="col">Servicio</th>
+                <th scope="col">Modalidad</th>
                 <th scope="col">Fecha de finalización</th>
                 <th scope="col">Inicio recurrente</th>
                 <th scope="col">Fin recurrente</th>
@@ -36,34 +36,23 @@
                   <td>{{ $servicio->fechaf_recurrente}}</td>
                   <td>     
                     @if(Auth::user()->tipo_usuario=="superadmin" or Auth::user()->tipo_usuario=="admin")                           
-                    <a href="/servicios/{{$servicio->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Editar</button></a>
-                    <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$servicio->id}}" class="btn btn-danger">Borrar</button>
+                    <a href="/servicios/{{$servicio->id}}/edit" data-id="{{$servicio->id}}" class="btn btn-success" > <i id="btneditar"   data-toggle="modal" data-target="#modal-default" class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>
+                    
+                    <a id="btn-eliminar" data-id="{{$servicio->id}}" class="btn btn-danger" ><i name="btn-eliminar"  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                    
                     @endif
                     @if(Auth::user()->tipo_usuario=="contador")                           
-                    <a href="/servicios/{{$servicio->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Editar</button></a>
+                     <a href="/servicios/{{$servicio->id}}/edit" data-id="{{$servicio->id}}" class="btn btn-success" > <i id="btneditar"   data-toggle="modal" data-target="#modal-default" class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>
                     @endif
 
                     @if(Auth::user()->tipo_usuario=="cliente" && $servicio->statuspago =='Pagado')                           
-                    <a href="#"><button type="button" class="btn btn-warning" id="btnfacturar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Facturar</button></a>
+                    <a href="#" id="btnfacturar"  data-id="{{$servicio->id}}" class="btn btn-primary" >  <i class="fa fa-file-text" aria-hidden="true"></i></a>
                     @endif
 
                   </td>                            
                 </tr>                    
               @endforeach                
             </tbody>
-            <tfoot>
-            <tr>
-                <th scope="col">Fecha de contrato</th>   
-                <th scope="col">Servicio</th>                    
-                <th scope="col">Contrato</th>                    
-                <th scope="col">Estado</th>                    
-                <th scope="col">Servicio</th>
-                <th scope="col">Fecha de finalización</th>
-                <th scope="col">Inicio recurrente</th>
-                <th scope="col">Fin recurrente</th>
-                <th scope="col">Acción</th>           
-            </tr>
-            </tfoot>
           </table>
         </div>
         <!-- /.card-body -->

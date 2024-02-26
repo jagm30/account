@@ -28,12 +28,10 @@
                   <td>{{ $usuario->email}}</td>
                   <td>{{ $usuario->tipo_usuario}}</td>                                     
                   <td>                                
-                    <a href="/usuarios/{{$usuario->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$usuario->id}}" data-toggle="modal" data-target="#modal-default">
-                Editar
-              </button></a>
+                    <a href="/usuarios/{{$usuario->id}}/edit" id="btneditar"  data-id="{{$usuario->id}}" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                   </td>                            
                   <td>                                
-                    <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$usuario->id}}" class="btn btn-danger">Borrar</button>                            
+                    <a id="btn-eliminar" data-id="{{$usuario->id}}" class="btn btn-danger" ><i name="btn-eliminar"  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>                            
                   </td>                        
                 </tr>                    
               @endforeach                

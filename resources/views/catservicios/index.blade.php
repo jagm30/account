@@ -23,7 +23,7 @@
                   <td>{{ $servicios->id }}</td>                            
                   <td>{{ $servicios->descripcion }}</td>
                   <td>                                
-                    <a href="/catservicios/{{$servicios->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"   data-target="#largeModal">Editar</button></a>                                                                            
+                    <a href="/catservicios/{{$servicios->id}}/edit" class="btn btn-success" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>                                                                            
                   </td>                        
                 </tr>                    
               @endforeach                

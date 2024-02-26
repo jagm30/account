@@ -12,8 +12,7 @@
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th scope="col">Nombre</th>                    
-                <th scope="col">Email</th>                    
+              <th scope="col">Razón social</th>                                 
                 <th scope="col">Teléfono</th>                    
                 <th scope="col">RFC</th>
                 <th scope="col">Constancia</th>                                    
@@ -24,26 +23,23 @@
             <tbody>                
               @foreach ($clientes as $cliente)                        
                 <tr>                            
-                  <td>{{ $cliente->nombre }}</td>
-                  <td>{{ $cliente->email }}</td>                            
+                  <td>{{ $cliente->razonsocial }}</td>                        
                   <td>{{ $cliente->telefono}}</td>
                   <td>{{ $cliente->rfc}}</td>
                   <td>@if( $cliente->constanciasituacion !='')<a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar <img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</td>                                
                   <td> 
                   @if(Auth::user()->tipo_usuario !="cliente")                               
-                    <a href="/clientes/{{$cliente->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
-                      Editar
-                      </button>
+                    <a href="/clientes/{{$cliente->id}}/edit" class="btn btn-success"   data-id="{{$cliente->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
                   @endif
-                    <a href="/servicios/estadoCuenta/{{$cliente->id_user}}"><button type="button" class="btn btn-info" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
+                    <a href="/servicios/estadoCuenta/{{$cliente->id_user}}"><button type="button" class="btn btn-info"   data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
                       Edo. de cuenta
                       </button>
                     </a>
                   </td>                            
                   <td>  
                     @if(Auth::user()->tipo_usuario !="cliente")                        
-                      <button type="button" id="btn-eliminar" name="btn-eliminar" data-id="{{$cliente->id}}" class="btn btn-danger">Borrar</button>    
+                      <a id="btn-eliminar" data-id="{{$cliente->id}}" class="btn btn-danger" ><i name="btn-eliminar"  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
                     @endif                        
                   </td>                        
                 </tr>                    
