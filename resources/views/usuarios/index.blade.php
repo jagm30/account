@@ -16,8 +16,7 @@
                 <th scope="col">Nombre</th>                    
                 <th scope="col">Email</th>                    
                 <th scope="col">Tipo de usuario</th>                                    
-                <th scope="col">Acción</th>                    
-                <th scope="col"></th>                                 
+                <th scope="col">Acción</th>                                               
             </tr>
             </thead>
             <tbody>                
@@ -27,10 +26,8 @@
                   <td>{{ $usuario->name }}</td>                            
                   <td>{{ $usuario->email}}</td>
                   <td>{{ $usuario->tipo_usuario}}</td>                                     
-                  <td>                                
-                    <a href="/usuarios/{{$usuario->id}}/edit" id="btneditar"  data-id="{{$usuario->id}}" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                  </td>                            
-                  <td>                                
+                  <td style="width: 100px">                                
+                    <a href="/usuarios/{{$usuario->id}}/edit" id="btneditar"  data-id="{{$usuario->id}}" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>                                
                     <a id="btn-eliminar" data-id="{{$usuario->id}}" class="btn btn-danger" ><i name="btn-eliminar"  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>                            
                   </td>                        
                 </tr>                    

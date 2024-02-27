@@ -16,8 +16,7 @@
                 <th scope="col">Teléfono</th>                    
                 <th scope="col">RFC</th>
                 <th scope="col">Constancia</th>                                    
-                <th scope="col">Accion</th>                    
-                <th scope="col"></th>                                
+                <th scope="col">Accion</th>                                                  
             </tr>
             </thead>
             <tbody>                
@@ -27,17 +26,15 @@
                   <td>{{ $cliente->telefono}}</td>
                   <td>{{ $cliente->rfc}}</td>
                   <td>@if( $cliente->constanciasituacion !='')<a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar <img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</td>                                
-                  <td> 
+                  <td style="width: 150px !important;">     
                   @if(Auth::user()->tipo_usuario !="cliente")                               
                     <a href="/clientes/{{$cliente->id}}/edit" class="btn btn-success"   data-id="{{$cliente->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
                   @endif
-                    <a href="/servicios/estadoCuenta/{{$cliente->id_user}}"><button type="button" class="btn btn-info"   data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
-                      Edo. de cuenta
-                      </button>
+                    <a href="/servicios/estadoCuenta/{{$cliente->id_user}}" data-id="{{$cliente->id}}" class="btn btn-warning">
+                      <i class="fa fa-credit-card fa-lg" aria-hidden="true"></i>
                     </a>
-                  </td>                            
-                  <td>  
+    
                     @if(Auth::user()->tipo_usuario !="cliente")                        
                       <a id="btn-eliminar" data-id="{{$cliente->id}}" class="btn btn-danger" ><i name="btn-eliminar"  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
                     @endif                        

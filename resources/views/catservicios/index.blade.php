@@ -22,7 +22,7 @@
                 <tr>                            
                   <td>{{ $servicios->id }}</td>                            
                   <td>{{ $servicios->descripcion }}</td>
-                  <td>                                
+                  <td style="width: 100px !important;">                                   
                     <a href="/catservicios/{{$servicios->id}}/edit" class="btn btn-success" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>                                                                            
                   </td>                        
                 </tr>                    

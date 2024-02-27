@@ -16,7 +16,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label for="nombre">Servicio</label>
-                      <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese la descripción del servicio" required>
+                      <textarea class="form-control" id="descripcion" name="descripcion" required></textarea>
                     </div>
                   </div>  
               </div>

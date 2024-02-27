@@ -34,7 +34,7 @@
                   <td>{{ $servicio->fecha_finaliza}}</td>
                   <td>{{ $servicio->fecha_recurrente}}</td>
                   <td>{{ $servicio->fechaf_recurrente}}</td>
-                  <td>     
+                  <td style="width: 100px !important;">     
                     @if(Auth::user()->tipo_usuario=="superadmin" or Auth::user()->tipo_usuario=="admin")                           
                     <a href="/servicios/{{$servicio->id}}/edit" data-id="{{$servicio->id}}" class="btn btn-success" > <i id="btneditar"   data-toggle="modal" data-target="#modal-default" class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>
                     

@@ -16,7 +16,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label for="nombre">Servicio</label>
-                      <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{$catservicio->descripcion}}" required>
+                      <textarea class="form-control" required>{{$catservicio->descripcion}}</textarea>
                     </div>
                   </div>  
               </div>
