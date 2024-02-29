@@ -16,13 +16,7 @@
                   <label for="nombre">Nombre</label>
                   <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
                 </div>
-              </div>  
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="email">Correo electrónico</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su email" required>
-                </div>
-              </div>  
+              </div>   
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="telefono">Teléfono</label>
@@ -55,7 +49,7 @@
                 </div>
                 <div class="form-group">
                   <label for="email">Correo electrónico</label>
-                  <input type="email" class="form-control" id="emailfactura" name="emailfactura" placeholder="Ingrese su email" required>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su email" required>
                 </div>
               </div>
               <div class="col-md-6">

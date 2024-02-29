@@ -21,12 +21,6 @@
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="email">Correo electrónico</label>
-                  <input type="email" class="form-control" id="email" name="email" value="{{ $cliente->email }}" required>
-                </div>
-              </div>  
-              <div class="col-md-6">
-                <div class="form-group">
                   <label for="telefono">Teléfono</label>
                   <input type="text" class="form-control" id="telefono" name="telefono" value="{{ $cliente->telefono }}" required>
                 </div>
@@ -57,7 +51,7 @@
                 </div>
                 <div class="form-group">
                   <label for="email">Correo electrónico</label>
-                  <input type="email" class="form-control" id="emailfactura" name="emailfactura" value="{{ $cliente->emailfactura }}" required>
+                  <input type="email" class="form-control" id="email" name="email" value="{{ $cliente->email }}" required>
                 </div>
               </div>
               <div class="col-md-6">

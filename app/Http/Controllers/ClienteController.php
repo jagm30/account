@@ -123,7 +123,6 @@ class ClienteController extends Controller
         $cliente->rfc           = $request->rfc;
         $cliente->domicilio     = $request->domicilio;
         $cliente->codigopostal  = $request->codigopostal;
-        $cliente->emailfactura  = $request->emailfactura;
         
         
         $usuario = User::findOrFail($cliente->id_user);
@@ -149,7 +148,7 @@ class ClienteController extends Controller
         
 
     }
-    public function edicion(Request $request, $id_cliente, $nombre, $email, $telefono, $razonsocial, $rfc, $domicilio, $codigopostal, $emailfactura)
+    public function edicion(Request $request, $id_cliente, $nombre, $email, $telefono, $razonsocial, $rfc, $domicilio, $codigopostal)
     {             
         $cliente = Cliente::find($id_cliente);
         $cliente->nombre        = $nombre;
@@ -159,7 +158,6 @@ class ClienteController extends Controller
         $cliente->rfc           = $rfc;
         $cliente->domicilio     = $domicilio;
         $cliente->codigopostal  = $codigopostal;
-        $cliente->emailfactura  = $emailfactura;
         $cliente->save();
         return response()->json(['data' => "Cambios guardados correctamente..."]);
 

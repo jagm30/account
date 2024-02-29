@@ -3,7 +3,7 @@
   <form method="POST" action="/servicios" accept-charset="UTF-8" name="formcliente" enctype="multipart/form-data">
      <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">Datoss de contacto</h3>
+          <h3 class="card-title">Información de servicio</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -22,9 +22,18 @@
                   </select>
                 </div>
               </div>  
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="telefono">Modalidad</label>
+                  <select class="form-control" id="modalidad" name="modalidad" required>
+                    <option value="norecurrente">Una sola exhibición</option>
+                    <option value="recurrente">Recurrente</option>
+                  </select>
+                </div>
+              </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="email">Descripcion</label>
+                  <label for="email">Servicio</label>
                   <select class="form-control" id="descripcion" name="descripcion" required="">
                     <option value="">Selecciona un servicio</option>
                     @foreach($catservicios as $servicio)
@@ -35,20 +44,12 @@
               </div>  
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="nombre">Fecha de contrato</label>
+                  <label for="nombre">Fecha de inicio(contrato)</label>
                   <input type="date" class="form-control" id="fecha_contrato" name="fecha_contrato" required value="{{ $date }}">
                   <input type="hidden" class="form-control" id="status" name="status" value="Activo" required>
                 </div>
               </div>                
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="telefono">Modalidad</label>
-                  <select class="form-control" id="modalidad" name="modalidad" required>
-                    <option value="norecurrente">Una sola exhibición</option>
-                    <option value="recurrente">Recurrente</option>
-                  </select>
-                </div>
-              </div>     
+                   
               <div class="col-md-6" id="contrecurrente" style="display: none;">
                 <div class="form-group">
                   <label for="telefono">Fecha recurrente</label>
@@ -64,7 +65,7 @@
 
               <div class="col-md-6" id="contnrecurrente" >
                 <div class="form-group">
-                  <label for="telefono">Fecha Vencimiento</label>
+                  <label for="telefono">Fecha de vencimiento(contrato)</label>
                   <input type="date" class="form-control" id="fecha_finaliza" name="fecha_finaliza"  >
                 </div>                
             </div>

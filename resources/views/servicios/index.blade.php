@@ -34,17 +34,22 @@
                   <td>{{ $servicio->fecha_finaliza}}</td>
                   <td>{{ $servicio->fecha_recurrente}}</td>
                   <td>{{ $servicio->fechaf_recurrente}}</td>
-                  <td>     
-                    @if(Auth::user()->tipo_usuario=="superadmin" or Auth::user()->tipo_usuario=="admin")                           
+                  <td style="width:150px !important;">  
+                    @if(Auth::user()->tipo_usuario=="superadmin" or Auth::user()->tipo_usuario=="admin")   
+
                     <a href="/servicios/{{$servicio->id}}/edit" data-id="{{$servicio->id}}" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <a id="btn-eliminar" data-id="{{$servicio->id}}" class="btn btn-danger" ><i name="btn-eliminar"  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                    <a id="btn-eliminar" data-id="{{$servicio->id}}" class="btn btn-danger" ><i name="btn-eliminar"  class="fa fa-trash" aria-hidden="true"></i></a>
+                    
                     @endif
                     @if(Auth::user()->tipo_usuario=="contador")                           
+                    
                     <a href="/servicios/{{$servicio->id}}/edit" data-id="{{$servicio->id}}" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    
                     @endif
-
                     @if(Auth::user()->tipo_usuario=="cliente" && $servicio->statuspago =='Pagado')                           
-                    <a href="#"><button type="button" class="btn btn-warning" id="btnfacturar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Facturar</button></a>
+                   
+                   <a href="#"><button type="button" class="btn btn-warning" id="btnfacturar"  data-id="{{$servicio->id}}" data-toggle="modal" data-target="#modal-default">Facturar</button></a>
+                   
                     @endif
 
                   </td>                            
