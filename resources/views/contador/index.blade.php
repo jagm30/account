@@ -12,48 +12,31 @@
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th scope="col">Nombre</th>                    
+              <th scope="col">Razón social</th>                    
                 <th scope="col">Email</th>                    
                 <th scope="col">Telefono</th>                    
-                <th scope="col">Status</th>
-                <th scope="col">Constancia</th>                                    
+                <th scope="col">Status</th>                                 
                 <th scope="col">Accion</th>                          
             </tr>
             </thead>
             <tbody>                
               @foreach ($clientes as $cliente)                        
                 <tr>                            
-                  <td>{{ $cliente->nombre }}</td>
+                  <td>{{ $cliente->razonsocial }}</td>
                   <td>{{ $cliente->email }}</td>                            
                   <td>{{ $cliente->telefono}}</td>
-                  <td>{{ $cliente->status}}</td>
-                  <td>@if( $cliente->constanciasituacion !='')<a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar <img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</td>                                
-                  <td> 
+                  <td style="text-align: center;">@if($cliente->status=='activo')<i class="fa fa-check" aria-hidden="true" style="color: green;"></i>@endif @if($cliente->status=='inactivo')<i class="fa fa-times" aria-hidden="true" style="color: red;"></i>@endif</td>
+                  <!--<td>@if( $cliente->constanciasituacion !='')<a href="{{ Storage::url($cliente->constanciasituacion) }}" target="_blank">Descargar <img src="/images/logo_situacionfiscal.png" width="50" height="50"></a> @endif</td>--> 
+                  <td>
                   @if(Auth::user()->tipo_usuario !="cliente")                               
-                    <a href="/clientes/{{$cliente->id}}/edit"><button type="button" class="btn btn-success" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
-                      Editar
-                      </button>
-                    </a>
+                    <a href="/clientes/{{$cliente->id}}/edit" class="btn btn-success" id="btneditar"  data-id="{{$cliente->id}}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                   @endif
-                    <a href="/contador/createservicio/{{ $cliente->id }}"><button type="button" class="btn btn-info" id="btneditar"  data-id="{{$cliente->id}}" data-toggle="modal" data-target="#modal-default">
-                      Agregar servicio
-                      </button>
+                    <a href="/contador/createservicio/{{ $cliente->id }}" class="btn btn-warning" id="btneditar"  data-id="{{$cliente->id}}" alt="Agregar servicio"> <i class="fa fa-plus" aria-hidden="true"></i>
                     </a>
                   </td>                                              
                 </tr>                    
               @endforeach                
             </tbody>
-            <tfoot>
-            <tr>
-              <th scope="col">Nombre</th>                    
-                <th scope="col">Email</th>                    
-                <th scope="col">Telefono</th>                    
-                <th scope="col">Status</th>
-                <th scope="col">Constancia</th>                                    
-                <th scope="col">Accion</th>                              
-           
-            </tr>
-            </tfoot>
           </table>
         </div>
         <!-- /.card-body -->

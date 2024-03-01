@@ -304,7 +304,7 @@
           </li> 
           @endif
           @endguest
-          <li class="nav-item">
+          <li class="nav-item" style="background-color: darkslateblue;">
             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
